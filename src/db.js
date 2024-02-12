@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Sequilize } = require("sequelize");
+const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
@@ -18,16 +18,16 @@ fs.readdirSync(path.join(__dirname, "/models"))
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
   )
   .forEach((file) => {
-    modelFefines.push(require(path.join(__dirname, "/models", file)));
+    modelDefiners.push(require(path.join(__dirname, "/models", file)));
   });
 
-modelsDefiners.forEach((model) => model(sequielze));
-let entries = Object.entries.map((entry) => [
-  entry[0][0].toUpperCase() + entry[0] - slice(1).emtry[1],
+modelDefiners.forEach((model) => model(sequelize));
+let entries = Object.entries(sequelize.models);
+let capsEntries = entries.map((entry) => [
+  entry[0][0].toUpperCase() + entry[0].slice(1),
+  entry[1],
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
-
-const { Videogame } = sequelize.models;
 
 module.exports = {
   ...sequelize.models,

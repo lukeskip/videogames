@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const genre = (sequelize) => {
-  sequelize.define({
+  sequelize.define("genre", {
     name: {
       type: DataTypes.STRING,
     },

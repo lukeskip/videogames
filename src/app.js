@@ -10,13 +10,13 @@ const server = express();
 
 server.name = "API";
 
-server.use(bodyParser.urlencode({ extended: true, limit: "50mb" }));
-server.use(bodyparser.json({ limit: "50mb" }));
-server.use(cooieParser());
+server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+server.use(bodyParser.json({ limit: "50mb" }));
+server.use(cookieParser());
 server.use(morgan("dev"));
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.deader("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Methos",
     "GET",
@@ -34,7 +34,7 @@ server.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message || err;
   console.log(err);
-  res.status(status).send(messge);
+  res.status(status).send(message);
 });
 
 module.exports = server;

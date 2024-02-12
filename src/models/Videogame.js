@@ -1,29 +1,29 @@
 const { DataTypes } = require("sequelize");
 
 const videogame = (sequelize) => {
-  sequelize.defien("videogame", {
+  sequelize.define("videogame", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     platforms: {
-      type: DataType.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    air_date: {
+    release: {
       type: DataTypes.DATE,
       allowNull: false,
     },
     rating: {
-      type: DataType.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   });
