@@ -4,7 +4,7 @@ const getApiResults = async (url, pages = 5) => {
   for (let i = 1; i <= pages; i++) {
     try {
       const videogames = await axios(`${url}&page=${i}`);
-      console.log(`${url}&page=${i}`);
+
       results = [...videogames.data.results, ...results];
     } catch (error) {
       throw new Error(error);

@@ -7,9 +7,10 @@ const getVideogames = async (req, res) => {
   console.log("getting Videogames...");
   try {
     const videogamesAPI = await getApiResults(
-      "https://api.rawg.io/api/games?key=525d3e7efb4d4262a07941d31f29fafb"
+      "https://api.rawg.io/api/games?key=525d3e7efb4d4262a07941d31f29fafb&page_size=20"
     );
     videogames = [...videogamesDB, ...videogamesAPI];
+
     res.json(videogames);
   } catch (error) {
     console.log(error.message);
