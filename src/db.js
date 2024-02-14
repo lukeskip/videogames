@@ -32,19 +32,24 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Videogame, Genre, User, Rating, Platform } = sequelize.models;
 
-Videogame.belongsToMany(Genre, { through: "videogame_genre" });
+Videogame.Genre = Videogame.belongsToMany(Genre, {
+  through: "videogame_genre",
+});
 Genre.belongsToMany(Videogame, { through: "videogame_genre" });
 
 User.hasMany(Videogame);
 Videogame.belongsTo(User);
 
 User.hasMany(Videogame);
+User.hasMany(Rating);
+
 Videogame.belongsTo(User);
+Videogame.hasMany(Rating);
+Videogame.belongsToMany(Platform, { through: "videogame_platform" });
 
 Rating.belongsTo(User);
 Rating.belongsTo(Videogame);
 
-Videogame.belongsToMany(Platform, { through: "videogame_platform" });
 Platform.belongsToMany(Videogame, { through: "videogame_platform" });
 
 module.exports = {

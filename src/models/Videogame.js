@@ -1,7 +1,13 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, sql } = require("sequelize");
 
 const videogame = (sequelize) => {
   sequelize.define("videogame", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +21,7 @@ const videogame = (sequelize) => {
       allowNull: false,
     },
     release: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
   });
