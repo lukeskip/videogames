@@ -1,0 +1,23 @@
+@import './_variables.css';
+.detail{
+    display: flex;
+    flex-wrap: wrap;
+}
+.detail .image{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.detail .info{
+    width: 50%;
+}
+
+.detail .info .description{
+    color:white;
+    font-family: var(--secondaryFont);
+}
+.detail h1{
+    color: var(--red);
+    font-family: var(--secondaryFont);
+}

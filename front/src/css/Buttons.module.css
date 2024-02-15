@@ -1,0 +1,43 @@
+@import './_variables.css';
+.buttonsGroup{
+    display: flex;
+    gap: 5px;
+}
+
+.buttonsGroup .buttonWrapper{
+    background-color: var(--grayLight);
+    border-radius : 4px;
+    -moz-border-radius : 4px;
+    -webkit-border-radius : 4px;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.buttonsGroup .buttonWrapper .button{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: var(--red);
+    position: relative;
+}
+
+.buttonsGroup .buttonWrapper .label{
+    color:var(--red);
+    text-align: center;
+    font-family: var(--secondaryFont);
+    font-size: .7em;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.buttonsGroup .buttonWrapper .button::before{
+    content: "";
+    width: 80%;
+    height: 80%;
+    border-radius: 100%;
+    position: absolute;
+    top:10%;
+    left:10%;
+    background: radial-gradient(circle, var(--red), var(--redDeep));
+}

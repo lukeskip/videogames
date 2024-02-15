@@ -1,0 +1,11 @@
+@import url('./_variables.css');
+.header{
+    margin-top: 40px;
+    min-height: 200px;
+    text-align: center;
+    border-bottom:2px solid var(--red)
+}
+
+.header .logo{
+    width:300px
+}
