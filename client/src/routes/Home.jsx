@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     const reduxLocal = localStorage.getItem("reduxState");
     if (reduxLocal) {
-      const { videogamesLocal } = JSON.parse(reduxLocal);
+      const videogamesLocal = JSON.parse(reduxLocal).videogames;
       setVideogamesLocal(videogamesLocal);
     } else {
       return async () => {
