@@ -1,5 +1,5 @@
 const axios = require("axios");
-const getApiResults = async (url, pages = 5) => {
+const getApiResults = async (url, pages = 1) => {
   let results = [];
   for (let i = 1; i <= pages; i++) {
     try {
