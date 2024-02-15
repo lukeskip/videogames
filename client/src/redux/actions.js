@@ -1,5 +1,4 @@
 import axios from "axios";
-const HOST = "http://localhost:3001";
 
 const GET_VIDEOGAMES_REQUEST = "GET_VIDEOGAMES_REQUEST";
 const GET_VIDEOGAMES_SUCCESS = "GET_VIDEOGAMES_SUCCESS";

@@ -17,6 +17,7 @@ export default function Detail() {
   useEffect(() => {
     return async () => {
       const getVideogame = await getDetailVideogame(id);
+      console.log(getVideogame.data);
       setVideogame(getVideogame.data);
     };
   }, []);
@@ -45,7 +46,7 @@ export default function Detail() {
               </div>
               <div className={stylesVideogame.portrait}>
                 <img
-                  src={videogame.background_image}
+                  src={videogame.image}
                   alt=""
                   className={stylesVideogame.image}
                 />

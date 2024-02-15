@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogames } from "../redux/actions.js";
+// import { getVideogames } from "../redux/actions.js";
+import getVideogames from "../controllers/getVideogames.js";
 import Videogames from "../components/Videogames";
 import styles from "../css/Container.module.css";
 import Header from "../components/Header";
@@ -14,13 +15,13 @@ export default function Home() {
 
   useEffect(() => {
     const reduxLocal = localStorage.getItem("reduxState");
-    if (reduxLocal) {
+    if (!reduxLocal) {
+      (async () => {
+        setVideogamesLocal(await getVideogames(dispatch));
+      })();
+    } else {
       const videogamesLocal = JSON.parse(reduxLocal).videogames;
       setVideogamesLocal(videogamesLocal);
-    } else {
-      return async () => {
-        dispatch(getVideogames());
-      };
     }
   }, []);
 
