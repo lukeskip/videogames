@@ -1,16 +1,20 @@
 const axios = require("axios");
+const { Videogame } = require("../db");
 const getVideogameDetail = async (req, res) => {
   const { id } = req.params;
   let videogame = undefined;
-  console.log(id);
-  if (Number(id)) {
-    console.log("buscamos en la API");
-    const { data } = await axios(
-      `https://api.rawg.io/api/games/${id}?key=525d3e7efb4d4262a07941d31f29fafb`
-    );
-    videogame = data;
-  } else {
-    console.log("buscamos en la base de datos");
+  try {
+    if (Number(id)) {
+      console.log("buscamos en la API");
+      const { data } = await axios(
+        `https://api.rawg.io/api/games/${id}?key=525d3e7efb4d4262a07941d31f29fafb`
+      );
+      videogame = data;
+    } else {
+      videogame = await Videogame.findByPk(id);
+    }
+  } catch (error) {
+    console.log(error.message);
   }
 
   if (!videogame) {
