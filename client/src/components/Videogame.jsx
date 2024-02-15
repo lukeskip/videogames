@@ -23,7 +23,7 @@ export default function Videogame({ videogame }) {
         <h3>{videogame.name}</h3>
       </div>
       <div className={styles.portrait}>
-        <img src={videogame.background_image} alt="" className={styles.image} />
+        <img src={videogame.image} alt="" className={styles.image} />
       </div>
     </div>
   );

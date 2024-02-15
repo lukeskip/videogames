@@ -5,9 +5,16 @@ const getVideogames = async (req, res) => {
   let videogames = [];
   console.log("getting Videogames...");
   try {
-    const videogamesAPI = await getApiResults(
+    let videogamesAPI = await getApiResults(
       "https://api.rawg.io/api/games?key=525d3e7efb4d4262a07941d31f29fafb&page_size=20"
     );
+
+    videogamesAPI = videogamesAPI.map((item) => {
+      return {
+        ...item,
+        image: item.background_image,
+      };
+    });
 
     const videogamesDB = await Videogame.findAll({
       include: Genre,
