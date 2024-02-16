@@ -30,6 +30,7 @@
     font-size: .7em;
     margin-top: 10px;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .buttonsGroup .buttonWrapper .button::before{

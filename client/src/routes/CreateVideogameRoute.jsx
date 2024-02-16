@@ -3,11 +3,17 @@ import styles from "../css/Form.module.css";
 import stylesContainer from "../css/Container.module.css";
 import Buttons from "../components/Buttons";
 import Header from "../components/Header";
+import postVideogame from "../controllers/postVideogame.js";
 
 export default function CreateVideogameRoute() {
   const [formData, setFormData] = useState({});
-  const formHandler = () => {
+  const formHandler = async () => {
     console.log("Sending form...");
+    try {
+      postVideogame(formData);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const clearHandler = () => {
@@ -39,6 +45,18 @@ export default function CreateVideogameRoute() {
           />
         </div>
         <div className={styles.fieldGroup}>
+          <label htmlFor="name" styles="">
+            Imagen:
+          </label>
+          <input
+            id="name"
+            type="file"
+            onChange={(event) =>
+              setFormData({ ...formData, image: event.target.files[0] })
+            }
+          />
+        </div>
+        <div className={styles.fieldGroup}>
           <label htmlFor="description" styles="">
             Descripción:
           </label>
@@ -66,15 +84,45 @@ export default function CreateVideogameRoute() {
         </div>
 
         <div className={styles.fieldGroup}>
-          <label htmlFor="image" styles="">
-            Imagen:
+          <label htmlFor="genres" styles="">
+            Géneros:
           </label>
           <input
-            id="image"
+            placeholder="Separados por comas"
+            id="genres"
             type="text"
-            value={formData.image ? formData.image : ""}
+            value={formData.genres ? formData.genres : ""}
             onChange={(event) =>
-              setFormData({ ...formData, image: event.target.value })
+              setFormData({ ...formData, genres: event.target.value })
+            }
+          />
+        </div>
+
+        <div className={styles.fieldGroup}>
+          <label htmlFor="rating" styles="">
+            Rating:
+          </label>
+          <input
+            placeholder="del 1 al 5"
+            id="rating"
+            type="text"
+            value={formData.rating ? formData.rating : ""}
+            onChange={(event) =>
+              setFormData({ ...formData, rating: event.target.value })
+            }
+          />
+        </div>
+        <div className={styles.fieldGroup}>
+          <label htmlFor="platforms" styles="">
+            Plataformas:
+          </label>
+          <input
+            placeholder="Separadas por comas"
+            id="platforms"
+            type="text"
+            value={formData.platforms ? formData.platforms : ""}
+            onChange={(event) =>
+              setFormData({ ...formData, platforms: event.target.value })
             }
           />
         </div>

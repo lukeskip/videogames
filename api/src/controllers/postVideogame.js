@@ -1,12 +1,16 @@
 const { Videogame, Genre } = require("../db.js");
 
 const postVideogame = async (req, res) => {
-  console.log("posting videogame...");
-  const { name, description, platforms, image, release, rating, genre } =
+  console.log("posting videogame...", req);
+  const { name, description, platforms, image, release, rating, genres } =
     req.body;
+  console.log("ESTO>>>>>>>>>>>>>>>>>>>>", req.files);
+  console.log("aquello>>>>>>>>>>>>>>>>>>>>", req.body);
   if (
-    [name, description, platforms, image, release, rating, genre].every(
-      (x) => x !== undefined
+    [name, description, platforms, image, release, rating, genres].every(
+      (x) => {
+        x !== undefined;
+      }
     )
   ) {
     try {

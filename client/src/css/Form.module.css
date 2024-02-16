@@ -27,11 +27,11 @@
     padding: 10px;
 }
 
-.form .fieldGroup input[type="text"]{
+.form .fieldGroup input{
     width: 80%;
 }
 
-.form input[type="text"]{
+.form input{
     background: var(--grayLight);
     height: 65px;
     width: 90%;
