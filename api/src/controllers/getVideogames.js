@@ -25,9 +25,8 @@ const getVideogames = async (req, res) => {
       queryString = new URLSearchParams(terms).toString();
     }
 
-    videogamesAPI = await getApiResults(
-      `${API_HOST}?${API_KEY}&${queryString}`
-    );
+    videogamesAPI = await getApiResults(`${API_HOST}/games?${API_KEY}`);
+    console.log(videogamesAPI.length);
     videogamesAPI = cleanProperties(videogamesAPI);
   } catch (error) {
     // in case of error we send the error to the console

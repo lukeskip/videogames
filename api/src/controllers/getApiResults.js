@@ -1,15 +1,20 @@
 const axios = require("axios");
-const getApiResults = async (url, pages = 1) => {
-  let results = [];
-  for (let i = 1; i <= pages; i++) {
-    try {
-      const videogames = await axios(`${url}&page=${i}`);
-      results = [...videogames.data.results, ...results];
-    } catch (error) {
-      console.error(`Error fetching data for page ${i}:`, error.message);
+
+const getApiResults = async (url, page = 1, results = []) => {
+  const { API_LIMIT } = process.env;
+  try {
+    let videogames = await axios(`${url}&page=${page}`);
+    console.log("Page", page);
+    console.log("Next", videogames.data.next);
+    results = [...videogames.data.results, ...results];
+    if (results.length <= Number(API_LIMIT)) {
+      return getApiResults(url, page + 1, results);
+    } else {
+      return results;
     }
+  } catch (error) {
+    console.log(error.message);
   }
-  return results;
 };
 
 module.exports = getApiResults;
