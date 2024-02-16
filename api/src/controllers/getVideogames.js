@@ -14,8 +14,18 @@ const getVideogames = async (req, res) => {
 
   // We serach in the API
   try {
+    let queryString;
+
+    // if name is defined we build a object and pass it as a string in the url
+    if (name) {
+      const terms = {
+        search: name,
+      };
+      queryString = new URLSearchParams(terms).toString();
+    }
+
     videogamesAPI = await getApiResults(
-      "https://api.rawg.io/api/games?key=525d3e7efb4d4262a07941d31f29fafb&page_size=20"
+      `https://api.rawg.io/api/games?key=525d3e7efb4d4262a07941d31f29fafb&${queryString}`
     );
     videogamesAPI = cleanProperties(videogamesAPI);
   } catch (error) {
@@ -39,13 +49,6 @@ const getVideogames = async (req, res) => {
   } catch (error) {
     // in case of error we send the error to the console
     console.log(error.message);
-  }
-
-  // we apply filters
-  if (name) {
-    videogamesAPI = videogamesAPI.filter((element) => {
-      return element.name.toLowerCase().includes(name.toLowerCase());
-    });
   }
 
   // we combine array even if they're empty
