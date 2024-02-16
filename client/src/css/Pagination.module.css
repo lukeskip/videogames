@@ -1,0 +1,24 @@
+.pagination{
+    color:var(--red);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination .page{
+    margin: 10px;
+    text-decoration: none;
+    font-family: var(--secondaryFont);
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.pagination .page:visited{
+    color:var(--red)
+}
+
+.pagination .page.active{
+    font-size: 1.8em;
+    color:white
+
+}
