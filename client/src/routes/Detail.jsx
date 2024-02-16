@@ -17,8 +17,7 @@ export default function Detail() {
   useEffect(() => {
     return async () => {
       const getVideogame = await getDetailVideogame(id);
-      console.log(getVideogame.data);
-      setVideogame(getVideogame.data);
+      setVideogame(getVideogame);
     };
   }, []);
 
