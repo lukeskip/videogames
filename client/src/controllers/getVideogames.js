@@ -6,7 +6,7 @@ import {
   getVideogamesError,
 } from "../redux/actions";
 
-const getVideogames = async (dispatch, terms) => {
+const getVideogames = async (terms, dispatch) => {
   console.log("getting video games");
   dispatch(loadingMode(true));
   try {
@@ -14,6 +14,7 @@ const getVideogames = async (dispatch, terms) => {
     const queryString = new URLSearchParams(terms).toString();
 
     const videogames = await axios(`${HOST}/videogames?${queryString}`);
+    console.log(videogames.data);
     dispatch(getVideogamesSuccess(videogames.data));
   } catch (error) {
     console.log(error.message);

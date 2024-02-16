@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { getVideogames } from "../redux/actions.js";
 import getVideogames from "../controllers/getVideogames.js";
 import Videogames from "../components/Videogames";
 import styles from "../css/Container.module.css";

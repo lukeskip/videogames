@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import styles from "../css/Form.module.css";
 import Buttons from "./Buttons";
+import getVideogames from "../controllers/getVideogames";
+import { useDispatch } from "react-redux";
+
 export default function SearchForm() {
   const [input, setInput] = useState("");
+  const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const formHandler = () => {
-    console.log(input);
+    if (input) {
+      getVideogames({ name: input }, dispatch);
+    } else {
+      setError("Debes escribir un término de búsqueda");
+    }
   };
 
   const clearHandler = () => {
