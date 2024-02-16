@@ -3,6 +3,7 @@ const getApiResults = require("./getApiResults");
 const { Videogame, Genre } = require("../db");
 const { Op } = require("sequelize");
 const cleanProperties = require("../helpers/cleanProperties");
+const { API_HOST, API_KEY } = process.env;
 
 const getVideogames = async (req, res) => {
   const { name } = req.query;
@@ -25,7 +26,7 @@ const getVideogames = async (req, res) => {
     }
 
     videogamesAPI = await getApiResults(
-      `https://api.rawg.io/api/games?key=525d3e7efb4d4262a07941d31f29fafb&${queryString}`
+      `${API_HOST}?${API_KEY}&${queryString}`
     );
     videogamesAPI = cleanProperties(videogamesAPI);
   } catch (error) {
