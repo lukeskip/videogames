@@ -1,6 +1,5 @@
 const cleanProperties = (array) => {
   return array.map((item) => {
-    console.log(item.description);
     return {
       id: item.id,
       name: item.name,

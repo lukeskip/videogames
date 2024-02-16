@@ -16,12 +16,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload,
+        error: "",
       };
       break;
     case GET_VIDEOGAMES_SUCCESS:
       return {
         ...state,
         loading: false,
+        error: "",
         videogames: {
           videogames: action.payload,
           videogamesDefault: action.payload,

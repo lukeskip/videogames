@@ -16,25 +16,26 @@ export default function Home() {
     const reduxLocal = localStorage.getItem("reduxState");
     if (!reduxLocal) {
       (async () => {
-        setVideogamesLocal(await getVideogames(dispatch));
+        setVideogamesLocal(await getVideogames(null, dispatch));
       })();
     } else {
       const videogamesLocal = JSON.parse(reduxLocal).videogames;
       setVideogamesLocal(videogamesLocal);
     }
-  }, []);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  }, [videogames]);
 
   return (
     <div className={styles.container}>
       <div className="home">
         <Header></Header>
-        <Videogames
-          videogames={videogamesLocal ? videogamesLocal : videogames}
-        />
+
+        {error ? (
+          <h2>{error}</h2>
+        ) : (
+          <Videogames
+            videogames={videogamesLocal ? videogamesLocal : videogames}
+          />
+        )}
       </div>
     </div>
   );

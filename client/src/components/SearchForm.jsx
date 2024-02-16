@@ -18,7 +18,7 @@ export default function SearchForm() {
   };
 
   const clearHandler = () => {
-    console.log("cleanded");
+    getVideogames(null, dispatch);
   };
 
   const buttons = [

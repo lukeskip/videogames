@@ -14,11 +14,9 @@ const getVideogames = async (terms, dispatch) => {
     const queryString = new URLSearchParams(terms).toString();
 
     const videogames = await axios(`${HOST}/videogames?${queryString}`);
-    console.log(videogames.data);
     dispatch(getVideogamesSuccess(videogames.data));
   } catch (error) {
-    console.log(error.message);
-    dispatch(getVideogamesError(error.message));
+    dispatch(getVideogamesError(error.response.data.message));
   }
 };
 
