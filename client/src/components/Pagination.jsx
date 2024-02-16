@@ -16,17 +16,18 @@ export default function Pagination({ pages }) {
   }
   return (
     <div className={styles.pagination}>
-      {array.map((item) => {
-        return (
-          <Link
-            key={item}
-            className={`${styles.page} ${styles[getActive(item)]}`}
-            to={`/?page=${item}`}
-          >
-            {item}
-          </Link>
-        );
-      })}
+      {pages > 1 &&
+        array.map((item) => {
+          return (
+            <Link
+              key={item}
+              className={`${styles.page} ${styles[getActive(item)]}`}
+              to={`/?page=${item}`}
+            >
+              {item}
+            </Link>
+          );
+        })}
     </div>
   );
 }

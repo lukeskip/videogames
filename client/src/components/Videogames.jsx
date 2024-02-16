@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 import getQueryVariable from "../helpers/getQueryVariable.js";
 export default function Videogames({ videogames }) {
   const location = useLocation();
-  const page = getQueryVariable("page", location);
+  let page = getQueryVariable("page", location);
   const pageSize = 20;
   const loading = useSelector((state) => state.loading);
   const pages = Math.ceil(videogames.length / pageSize);
