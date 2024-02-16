@@ -1,5 +1,4 @@
 const axios = require("axios");
-
 const getApiResults = async (url, page = 1, results = []) => {
   const { API_LIMIT } = process.env;
   try {
