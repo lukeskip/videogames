@@ -9,12 +9,12 @@ const postVideogame = async (object) => {
 
     const request = await axios.post(
       "http://localhost:3001/videogames",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      object
+      // {
+      //   headers: {
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // }
     );
     console.log(request.data);
   } catch (error) {

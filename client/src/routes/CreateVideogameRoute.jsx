@@ -49,13 +49,26 @@ export default function CreateVideogameRoute() {
             Imagen:
           </label>
           <input
+            id="image"
+            type="text"
+            value={formData.image ? formData.image : ""}
+            onChange={(event) =>
+              setFormData({ ...formData, image: event.target.value })
+            }
+          />
+        </div>
+        {/* <div className={styles.fieldGroup}>
+          <label htmlFor="name" styles="">
+            Imagen:
+          </label>
+          <input
             id="name"
             type="file"
             onChange={(event) =>
               setFormData({ ...formData, image: event.target.files[0] })
             }
           />
-        </div>
+        </div> */}
         <div className={styles.fieldGroup}>
           <label htmlFor="description" styles="">
             Descripción:
@@ -75,7 +88,7 @@ export default function CreateVideogameRoute() {
           </label>
           <input
             id="release"
-            type="text"
+            type="date"
             value={formData.release ? formData.release : ""}
             onChange={(event) =>
               setFormData({ ...formData, release: event.target.value })

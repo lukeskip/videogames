@@ -1,22 +1,18 @@
 const { Videogame, Genre } = require("../db.js");
 
 const postVideogame = async (req, res) => {
-  console.log("posting videogame...", req);
+  console.log("posting videogame...");
   const { name, description, platforms, image, release, rating, genres } =
     req.body;
-  console.log("ESTO>>>>>>>>>>>>>>>>>>>>", req.files);
-  console.log("aquello>>>>>>>>>>>>>>>>>>>>", req.body);
+  console.log([name, description, platforms, image, release, rating, genres]);
   if (
     [name, description, platforms, image, release, rating, genres].every(
-      (x) => {
-        x !== undefined;
+      (x, index) => {
+        return x !== undefined;
       }
     )
   ) {
     try {
-      const [genreDB, createdGenre] = await Genre.findOrCreate({
-        where: { name: genre },
-      });
       const [videogame, created] = await Videogame.findOrCreate({
         where: {
           name,
@@ -31,7 +27,14 @@ const postVideogame = async (req, res) => {
       });
 
       if (created) {
-        videogame.addGenre(genreDB);
+        const genresArray = genres.split(",");
+        genresArray.map(async (genre) => {
+          const [genreDB, createdGenre] = await Genre.findOrCreate({
+            where: { name: genre },
+          });
+          videogame.addGenre(genreDB);
+        });
+
         return res.status(201).json({ message: `${videogame.name} created` });
       }
 
