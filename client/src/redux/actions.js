@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const GET_VIDEOGAMES_REQUEST = "GET_VIDEOGAMES_REQUEST";
+const LOADING_MODE = "LOADING_MODE";
 const GET_VIDEOGAMES_SUCCESS = "GET_VIDEOGAMES_SUCCESS";
 const GET_VIDEOGAMES_ERROR = "GET_VIDEOGAMES_ERROR";
 
 const getVideogames = () => {
   return async (dispatch) => {
     console.log("getting video games");
-    dispatch(getVideogamesRequest());
+    dispatch(loadingMode(true));
     try {
       const videogames = await axios(`${HOST}/videogames`);
       console.log(videogames.data);
@@ -18,9 +18,10 @@ const getVideogames = () => {
   };
 };
 
-const getVideogamesRequest = (payload) => {
+const loadingMode = (payload) => {
   return {
-    type: GET_VIDEOGAMES_REQUEST,
+    type: LOADING_MODE,
+    payload: payload,
   };
 };
 
@@ -39,11 +40,11 @@ const getVideogamesError = (payload) => {
 };
 
 export {
-  GET_VIDEOGAMES_REQUEST,
+  LOADING_MODE,
   GET_VIDEOGAMES_SUCCESS,
   GET_VIDEOGAMES_ERROR,
+  loadingMode,
   getVideogames,
-  getVideogamesRequest,
   getVideogamesSuccess,
   getVideogamesError,
 };

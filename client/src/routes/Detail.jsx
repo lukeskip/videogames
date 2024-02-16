@@ -5,8 +5,11 @@ import stylesDetail from "../css/Detail.module.css";
 import stylesVideogame from "../css/Videogame.module.css";
 import Header from "../components/Header";
 import getDetailVideogame from "../controllers/getDetailVideogame.js";
+import Loader from "../components/Loader";
+import { useDispatch } from "react-redux";
 
 export default function Detail() {
+  const dispatch = useDispatch();
   const [videogame, setVideogame] = useState();
   const { id } = useParams();
 
@@ -16,7 +19,7 @@ export default function Detail() {
 
   useEffect(() => {
     return async () => {
-      const getVideogame = await getDetailVideogame(id);
+      const getVideogame = await getDetailVideogame(id, dispatch);
       setVideogame(getVideogame);
     };
   }, []);
@@ -24,6 +27,7 @@ export default function Detail() {
   return (
     <div className={styles.container}>
       <Header></Header>
+      <Loader />
       {videogame && (
         <div className={stylesDetail.detail}>
           <div className={stylesDetail.image}>

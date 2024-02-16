@@ -20,7 +20,6 @@ export default function SearchForm() {
   return (
     <div className={styles.form}>
       <input
-        styles={styles.input}
         type="text"
         onChange={(event) => setInput(event.target.value)}
         value={input}

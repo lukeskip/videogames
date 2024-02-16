@@ -11,6 +11,26 @@
     gap:10px
 }
 
+.form.column{
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form .fieldGroup{
+    display: flex;
+}
+
+.form .fieldGroup label{
+    width: 20%;
+    text-align: right;
+    padding: 10px;
+}
+
+.form .fieldGroup input[type="text"]{
+    width: 80%;
+}
+
 .form input[type="text"]{
     background: var(--grayLight);
     height: 65px;
@@ -20,4 +40,17 @@
     font-family: var(--secondaryFont);
     font-size: 1.3em;
     padding-left: 10px;
+}
+
+
+
+.form label{
+    color:var(--red);
+    font-family: var(--secondaryFont);
+    font-size: 1.3em;
+}
+
+
+.form .submitWrapper{
+    margin: 20px;
 }

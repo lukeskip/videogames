@@ -1,5 +1,5 @@
 import {
-  GET_VIDEOGAMES_REQUEST,
+  LOADING_MODE,
   GET_VIDEOGAMES_SUCCESS,
   GET_VIDEOGAMES_ERROR,
 } from "./actions";
@@ -12,10 +12,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_VIDEOGAMES_REQUEST:
+    case LOADING_MODE:
       return {
         ...state,
-        loading: true,
+        loading: action.payload,
       };
       break;
     case GET_VIDEOGAMES_SUCCESS:
