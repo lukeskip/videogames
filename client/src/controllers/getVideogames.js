@@ -1,4 +1,4 @@
-const HOST = "http://localhost:3001";
+const HOST = import.meta.env.VITE_HOST;
 import axios from "axios";
 import {
   loadingMode,
