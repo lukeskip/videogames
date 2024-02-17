@@ -29,7 +29,7 @@ const getVideogames = async (req, res) => {
       `${API_HOST}/games?${API_KEY}&${queryString}`
     );
 
-    videogamesAPI = cleanProperties(videogamesAPI);
+    videogamesAPI = cleanProperties(videogamesAPI, "api");
   } catch (error) {
     // in case of error we send the error to the console
     console.log(error.message);
@@ -48,6 +48,8 @@ const getVideogames = async (req, res) => {
       include: Genre,
       ...options,
     });
+
+    videogamesDB = cleanProperties(videogamesDB, "db");
   } catch (error) {
     // in case of error we send the error to the console
     console.log(error.message);

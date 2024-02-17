@@ -37,7 +37,6 @@ export default function Detail() {
                 ${stylesVideogame.videogameDetail}
                 `}
               style={{ transform: `rotate(${generateRandom()}deg)` }}
-              onClick={() => navigate(`/detail/${videogame.id}`)}
             >
               <div className={stylesVideogame.genres}>
                 {videogame.genres.map((genre) => {

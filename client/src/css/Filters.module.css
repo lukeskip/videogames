@@ -1,0 +1,12 @@
+.filters{
+    margin: auto;
+    display: flex;
+    justify-content:space-around;
+    margin: 40px;
+ }
+ 
+ .filters label{
+    color:white;
+    font-family: var(--secondaryFont);
+    margin-right: 10px;
+ }

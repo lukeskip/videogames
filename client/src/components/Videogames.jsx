@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import { useLocation } from "react-router-dom";
 import Pagination from "./Pagination";
 import getQueryVariable from "../helpers/getQueryVariable.js";
+import Filters from "../components/Filters";
 export default function Videogames({ videogames }) {
   const location = useLocation();
   let page = getQueryVariable("page", location);
@@ -27,6 +28,7 @@ export default function Videogames({ videogames }) {
   }
   return (
     <>
+      <Filters videogames={videogames} />
       <Pagination pages={pages} />
       <div className={styles.videogames}>
         {getvisibleVideogames().map((videogame) => {

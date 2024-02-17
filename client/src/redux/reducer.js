@@ -2,6 +2,7 @@ import {
   LOADING_MODE,
   GET_VIDEOGAMES_SUCCESS,
   GET_VIDEOGAMES_ERROR,
+  FILTER_VIDEOGAMES,
 } from "./actions";
 
 const initialState = {
@@ -27,6 +28,16 @@ const reducer = (state = initialState, action) => {
         videogames: {
           videogames: action.payload,
           videogamesDefault: action.payload,
+        },
+      };
+      break;
+
+    case FILTER_VIDEOGAMES:
+      return {
+        ...state,
+        videogames: {
+          ...state.videogames,
+          videogames: action.payload,
         },
       };
       break;

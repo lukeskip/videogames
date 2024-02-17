@@ -8,7 +8,6 @@ export default function Pagination({ pages }) {
   const page = getQueryVariable("page", location);
   const array = [];
   const getActive = (item) => {
-    console.log(item, page);
     return item === Number(page) ? "active" : "";
   };
   for (let i = 1; i <= pages; i++) {
