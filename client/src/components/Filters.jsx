@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/Filters.module.css";
 import filterVideogamesController from "../controllers/filterVideogamesController";
 import { filterVideogames } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import getGenresController from "../controllers/getGenresController";
 
 export default function Filters({ videogames }) {
+  const [genres, setGenres] = useState([]);
   const { videogamesDefault } = useSelector((state) => state.videogames);
   const dispatch = useDispatch();
   const handleOrder = () => {
@@ -29,6 +31,10 @@ export default function Filters({ videogames }) {
     console.log("Handling location...");
   };
 
+  useEffect(() => {
+    setGenres(getGenresController(videogamesDefault));
+  }, [videogamesDefault]);
+
   return (
     <div>
       <div className={styles.filters}>
@@ -50,8 +56,19 @@ export default function Filters({ videogames }) {
         </div>
         <div className="form-group">
           <label htmlFor="">Filtrar por género</label>
-          <select name="" id="" onChange={handleGenre}>
+          <select
+            name=""
+            id=""
+            onChange={(event) => handleFilter("genre", event.target.value)}
+          >
             <option value="all">Todos</option>
+            {genres.map((element, index) => {
+              return (
+                <option key={index} value={element}>
+                  {element}
+                </option>
+              );
+            })}
           </select>
         </div>
 
