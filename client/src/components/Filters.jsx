@@ -3,7 +3,8 @@ import styles from "../css/Filters.module.css";
 import filterVideogamesController from "../controllers/filterVideogamesController";
 import { filterVideogames, setPage } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import getGenresController from "../controllers/getGenresController";
+import getGenres from "../controllers/getGenresController";
+import orderVideogames from "../controllers/orderVideogamesController.js";
 
 export default function Filters({ videogames }) {
   const [genres, setGenres] = useState([]);
@@ -25,16 +26,16 @@ export default function Filters({ videogames }) {
     dispatch(filterVideogames(filtered));
     dispatch(setPage(1));
   };
-  const handleGenre = () => {
-    console.log("Handling genre...");
-  };
 
-  const handleLocation = () => {
+  const orderHandler = (property, order) => {
     console.log("Handling location...");
+    const orderedVideogames = orderVideogames(videogames, property, order);
+    dispatch(filterVideogames(orderedVideogames));
+    dispatch(setPage(1));
   };
 
   useEffect(() => {
-    setGenres(getGenresController(videogamesDefault));
+    setGenres(getGenres(videogamesDefault));
   }, [videogamesDefault]);
 
   return (
@@ -42,18 +43,30 @@ export default function Filters({ videogames }) {
       <div className={styles.filters}>
         <div className="form-group">
           <label htmlFor="">Order por rating:</label>
-          <select name="" id="" onChange={handleOrder}>
+          <select
+            name=""
+            id=""
+            onChange={(event) => {
+              orderHandler("rating", event.target.value);
+            }}
+          >
             <option value=""></option>
-            <option value="a">Ascendente</option>
-            <option value="d">Descendente</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
           </select>
         </div>
         <div className="form-group">
           <label htmlFor="">Order por nombre:</label>
-          <select name="" id="" onChange={handleOrder}>
+          <select
+            name=""
+            id=""
+            onChange={(event) => {
+              orderHandler("name", event.target.value);
+            }}
+          >
             <option value=""></option>
-            <option value="a">Ascendente</option>
-            <option value="d">Descendente</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
           </select>
         </div>
         <div className="form-group">

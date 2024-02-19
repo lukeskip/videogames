@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <div className={styles.footer}>
       <div className={stylesContainer.container}>
-        <div>Footer</div>
-        <div>Otra cosa</div>
+        <div>Desarrollado por Cheko Milk</div>
+        <div>Proyecto Individual para Henry</div>
       </div>
     </div>
   );
