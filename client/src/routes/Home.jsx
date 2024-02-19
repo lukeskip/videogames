@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <MainLayout>
-      <div className={styles.container}>
+      <section className={styles.container}>
         {error ? (
           <h2>{error}</h2>
         ) : (
@@ -45,7 +45,7 @@ export default function Home() {
             videogames={videogamesLocal ? videogamesLocal : videogames}
           />
         )}
-      </div>
+      </section>
     </MainLayout>
   );
 }

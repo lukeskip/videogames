@@ -28,7 +28,7 @@ export default function CreateVideogameRoute() {
   }, [formData]);
 
   return (
-    <div className={stylesContainer.container}>
+    <section className={stylesContainer.container}>
       <Header />
       <div className={`${styles.form} ${styles.column}`}>
         <div className={styles.fieldGroup}>
@@ -143,6 +143,6 @@ export default function CreateVideogameRoute() {
           <Buttons buttons={buttons} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -5,11 +5,9 @@
     line-height: 1.4;
     font-weight: bold;
     padding: 30px 2px 50px;
-    background: linear-gradient(#000 0 0) 0 0/100% 100% content-box padding-box no-repeat; 
     position: absolute;
     top:50%;
     left:50%;
-    overflow: hidden;
     animation: l10-0 2s infinite cubic-bezier(1,175,.5,175);
   }
   .loader::before {

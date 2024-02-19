@@ -27,7 +27,7 @@ export default function Detail() {
 
   return (
     <MainLayout>
-      <div className={styles.container}>
+      <section className={styles.container}>
         <Loader />
         {videogame && (
           <div className={stylesDetail.detail}>
@@ -65,7 +65,7 @@ export default function Detail() {
             </div>
           </div>
         )}
-      </div>
+      </section>
     </MainLayout>
   );
 }

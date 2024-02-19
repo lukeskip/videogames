@@ -21,3 +21,6 @@ h2{
     max-width: 1200px;
     margin: auto;
 }
+section{
+    min-height:50vh
+}
