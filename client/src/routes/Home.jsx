@@ -4,13 +4,17 @@ import getVideogames from "../controllers/getVideogames.js";
 import Videogames from "../components/Videogames";
 import styles from "../css/Container.module.css";
 import Header from "../components/Header";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
   const { videogames } = useSelector((state) => state.videogames);
   const loading = useSelector((state) => state.loading);
+  const page = useSelector((state) => state.page);
   const error = useSelector((state) => state.error);
+  const location = useLocation();
   const [videogamesLocal, setVideogamesLocal] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const reduxLocal = localStorage.getItem("reduxState");
@@ -23,6 +27,10 @@ export default function Home() {
       setVideogamesLocal(videogamesLocal);
     }
   }, [videogames]);
+
+  useEffect(() => {
+    navigate(`/?page=${page}`);
+  }, [videogamesLocal]);
 
   return (
     <div className={styles.container}>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/Filters.module.css";
 import filterVideogamesController from "../controllers/filterVideogamesController";
-import { filterVideogames } from "../redux/actions";
+import { filterVideogames, setPage } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import getGenresController from "../controllers/getGenresController";
 
 export default function Filters({ videogames }) {
   const [genres, setGenres] = useState([]);
   const { videogamesDefault } = useSelector((state) => state.videogames);
+
   const dispatch = useDispatch();
   const handleOrder = () => {
     console.log("Handling order...");
@@ -22,6 +23,7 @@ export default function Filters({ videogames }) {
     );
 
     dispatch(filterVideogames(filtered));
+    dispatch(setPage(1));
   };
   const handleGenre = () => {
     console.log("Handling genre...");

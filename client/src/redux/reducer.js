@@ -1,5 +1,6 @@
 import {
   LOADING_MODE,
+  SET_PAGE,
   GET_VIDEOGAMES_SUCCESS,
   GET_VIDEOGAMES_ERROR,
   FILTER_VIDEOGAMES,
@@ -8,11 +9,19 @@ import {
 const initialState = {
   loading: false,
   error: "",
+  page: undefined,
   videogames: { videogames: [], videogamesDefault: [] },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_PAGE:
+      console.log("aqui!!!!", action.payload);
+      return {
+        ...state,
+        page: action.payload,
+      };
+      break;
     case LOADING_MODE:
       return {
         ...state,
@@ -35,6 +44,7 @@ const reducer = (state = initialState, action) => {
     case FILTER_VIDEOGAMES:
       return {
         ...state,
+        page: 1,
         videogames: {
           ...state.videogames,
           videogames: action.payload,

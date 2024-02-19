@@ -7,17 +7,22 @@ import { useLocation } from "react-router-dom";
 import Pagination from "./Pagination";
 import getQueryVariable from "../helpers/getQueryVariable.js";
 import Filters from "../components/Filters";
+import { setPage } from "../redux/actions.js";
+import { useDispatch } from "react-redux";
+
 export default function Videogames({ videogames }) {
   const location = useLocation();
   let page = getQueryVariable("page", location);
   const pageSize = 20;
   const loading = useSelector((state) => state.loading);
   const pages = Math.ceil(videogames.length / pageSize);
+  const dispatch = useDispatch();
 
-  const getvisibleVideogames = () => {
+  const getVisibleVideogames = () => {
     if (!page) {
       page = 1;
     }
+    // dispatch(setPage(page));
     const end = pageSize * Number(page);
     const init = end - pageSize;
     return videogames.slice(init, end);
@@ -31,7 +36,7 @@ export default function Videogames({ videogames }) {
       <Filters videogames={videogames} />
       <Pagination pages={pages} />
       <div className={styles.videogames}>
-        {getvisibleVideogames().map((videogame) => {
+        {getVisibleVideogames().map((videogame) => {
           return <Videogame key={videogame.id} videogame={videogame} />;
         })}
       </div>
