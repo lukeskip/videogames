@@ -1,0 +1,8 @@
+.footer{
+    margin-top: 5em;
+    min-height: 200px;
+    background-color: var(--red);
+    font-family: var(--secondaryFont);
+    color:white;
+    padding: 3em;
+}

@@ -4,9 +4,10 @@ import styles from "../css/Container.module.css";
 import stylesDetail from "../css/Detail.module.css";
 import stylesVideogame from "../css/Videogame.module.css";
 import Header from "../components/Header";
-import getDetailVideogame from "../controllers/getDetailVideogame.js";
+import getDetailVideogame from "../controllers/getDetailVideogameController.js";
 import Loader from "../components/Loader";
 import { useDispatch } from "react-redux";
+import MainLayout from "../layouts/MainLayout";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -25,45 +26,46 @@ export default function Detail() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <Header></Header>
-      <Loader />
-      {videogame && (
-        <div className={stylesDetail.detail}>
-          <div className={stylesDetail.image}>
-            <div
-              className={`
+    <MainLayout>
+      <div className={styles.container}>
+        <Loader />
+        {videogame && (
+          <div className={stylesDetail.detail}>
+            <div className={stylesDetail.image}>
+              <div
+                className={`
                 ${stylesVideogame.videogame}
                 ${stylesVideogame.videogameDetail}
                 `}
-              style={{ transform: `rotate(${generateRandom()}deg)` }}
-            >
-              <div className={stylesVideogame.genres}>
-                {videogame.genres.map((genre) => {
-                  return <div key={genre.id}>{genre.name}</div>;
-                })}
-              </div>
-              <div className={stylesVideogame.title}>
-                <h3>{videogame.name}</h3>
-              </div>
-              <div className={stylesVideogame.portrait}>
-                <img
-                  src={videogame.image}
-                  alt=""
-                  className={stylesVideogame.image}
-                />
+                style={{ transform: `rotate(${generateRandom()}deg)` }}
+              >
+                <div className={stylesVideogame.genres}>
+                  {videogame.genres.map((genre) => {
+                    return <div key={genre.id}>{genre.name}</div>;
+                  })}
+                </div>
+                <div className={stylesVideogame.title}>
+                  <h3>{videogame.name}</h3>
+                </div>
+                <div className={stylesVideogame.portrait}>
+                  <img
+                    src={videogame.image}
+                    alt=""
+                    className={stylesVideogame.image}
+                  />
+                </div>
               </div>
             </div>
+            <div className={stylesDetail.info}>
+              <h1>{videogame.name}</h1>
+              <div
+                dangerouslySetInnerHTML={{ __html: videogame.description }}
+                className={stylesDetail.description}
+              />
+            </div>
           </div>
-          <div className={stylesDetail.info}>
-            <h1>{videogame.name}</h1>
-            <div
-              dangerouslySetInnerHTML={{ __html: videogame.description }}
-              className={stylesDetail.description}
-            />
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </MainLayout>
   );
 }

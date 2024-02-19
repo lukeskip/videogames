@@ -1,20 +1,24 @@
 import styles from "../css/Header.module.css";
 import logo from "../assets/img/logo.png";
 import SearchForm from "./SearchForm";
+import stylesContainer from "../css/Container.module.css";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <div className={styles.header}>
-      <img
-        className={styles.logo}
-        src={logo}
-        alt=""
-        onClick={() => navigate(`/`)}
-      />
-      <SearchForm />
+      <div className={stylesContainer.container}>
+        <img
+          className={styles.logo}
+          src={logo}
+          alt=""
+          onClick={() => navigate(`/`)}
+        />
+        {location.pathname === "/" && <SearchForm />}
+      </div>
     </div>
   );
 }

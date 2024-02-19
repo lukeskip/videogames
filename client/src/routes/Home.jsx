@@ -5,6 +5,7 @@ import Videogames from "../components/Videogames";
 import styles from "../css/Container.module.css";
 import Header from "../components/Header";
 import { useLocation, useNavigate } from "react-router-dom";
+import MainLayout from "../layouts/mainLayout";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -35,10 +36,8 @@ export default function Home() {
   }, [videogamesLocal]);
 
   return (
-    <div className={styles.container}>
-      <div className="home">
-        <Header></Header>
-
+    <MainLayout>
+      <div className={styles.container}>
         {error ? (
           <h2>{error}</h2>
         ) : (
@@ -47,6 +46,6 @@ export default function Home() {
           />
         )}
       </div>
-    </div>
+    </MainLayout>
   );
 }
