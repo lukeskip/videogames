@@ -10,6 +10,7 @@ const getApiResults = async (url, page = 1, results = []) => {
       return results;
     }
   } catch (error) {
+    console.log(error.message);
     return [];
   }
 };
