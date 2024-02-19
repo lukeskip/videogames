@@ -9,6 +9,7 @@ const cleanProperties = (array, location) => {
         location,
         release: item.release,
         genres: item.genres,
+        rating: item.rating,
       };
     });
   } else return [];
