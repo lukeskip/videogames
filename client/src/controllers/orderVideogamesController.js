@@ -1,8 +1,6 @@
 const orderVideogames = (videogames, property, order) => {
   console.log(property, order);
 
-  if (order === "desc") videogames.reverse();
-
   videogames.sort((a, b) => {
     if (a[property] < b[property]) {
       return -1;
@@ -13,6 +11,7 @@ const orderVideogames = (videogames, property, order) => {
     return 0;
   });
 
+  if (order === "desc") videogames.reverse();
   console.log(videogames);
   return videogames;
 };

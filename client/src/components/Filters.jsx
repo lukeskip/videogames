@@ -50,7 +50,6 @@ export default function Filters({ videogames }) {
               orderHandler("rating", event.target.value);
             }}
           >
-            <option value=""></option>
             <option value="asc">Ascendente</option>
             <option value="desc">Descendente</option>
           </select>
@@ -64,7 +63,6 @@ export default function Filters({ videogames }) {
               orderHandler("name", event.target.value);
             }}
           >
-            <option value=""></option>
             <option value="asc">Ascendente</option>
             <option value="desc">Descendente</option>
           </select>

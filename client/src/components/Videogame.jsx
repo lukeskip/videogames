@@ -22,6 +22,7 @@ export default function Videogame({ videogame }) {
       <div className={styles.title}>
         <h3>{videogame.name}</h3>
       </div>
+      <div className={styles.rating}>{videogame.rating}</div>
       <div className={styles.portrait}>
         <img src={videogame.image} alt="" className={styles.image} />
       </div>

@@ -19,6 +19,24 @@
     width: 50%;
   }
 
+  .videogame .rating{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    font-weight: 700;
+    background-image: url('../assets/img/rating.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width:70px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: var(--golden);
+    font-family: var(--secondaryFont);
+    transform: rotate(9deg);
+    z-index: 10;
+  }
+
   .videogame .title{
     background: rgba(0, 0, 0, .7);
     /* color:var(--red); */
