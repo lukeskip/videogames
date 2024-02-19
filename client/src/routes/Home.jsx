@@ -29,7 +29,9 @@ export default function Home() {
   }, [videogames]);
 
   useEffect(() => {
-    navigate(`/?page=${page}`);
+    if (page) {
+      navigate(`/?page=${page}`);
+    }
   }, [videogamesLocal]);
 
   return (

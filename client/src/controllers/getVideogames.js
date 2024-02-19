@@ -18,7 +18,10 @@ const getVideogames = async (terms, dispatch) => {
     dispatch(getVideogamesSuccess(videogames.data));
     dispatch(setPage(1));
   } catch (error) {
-    dispatch(getVideogamesError(error.response.data.message));
+    const errorMessage = error.response.data
+      ? error.response.data.message
+      : error.message;
+    dispatch(getVideogamesError(errorMessage));
   }
 };
 
