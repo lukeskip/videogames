@@ -9,19 +9,15 @@ import orderVideogames from "../controllers/orderVideogamesController.js";
 export default function Filters({ videogames }) {
   const [genres, setGenres] = useState([]);
   const { videogamesDefault } = useSelector((state) => state.videogames);
+  const [filters, setFilters] = useState({ genre: "all", location: "all" });
 
   const dispatch = useDispatch();
-  const handleOrder = () => {
-    console.log("Handling order...");
-  };
 
   const handleFilter = (property, value) => {
     console.log("Handling Filter...");
-    const filtered = filterVideogamesController(
-      videogamesDefault,
-      property,
-      value
-    );
+    const newFilters = { ...filters, [property]: value };
+    setFilters(newFilters);
+    const filtered = filterVideogamesController(videogamesDefault, newFilters);
 
     dispatch(filterVideogames(filtered));
     dispatch(setPage(1));
@@ -29,7 +25,11 @@ export default function Filters({ videogames }) {
 
   const orderHandler = (property, order) => {
     console.log("Handling location...");
-    const orderedVideogames = orderVideogames(videogames, property, order);
+    const orderedVideogames = orderVideogames(
+      videogamesDefault,
+      property,
+      order
+    );
     dispatch(filterVideogames(orderedVideogames));
     dispatch(setPage(1));
   };
@@ -42,7 +42,7 @@ export default function Filters({ videogames }) {
     <div>
       <div className={styles.filters}>
         <div className="form-group">
-          <label htmlFor="">Order por rating:</label>
+          <label htmlFor="">Por rating:</label>
           <select
             name=""
             id=""
@@ -55,7 +55,7 @@ export default function Filters({ videogames }) {
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="">Order por nombre:</label>
+          <label htmlFor="">Por nombre:</label>
           <select
             name=""
             id=""

@@ -1,20 +1,18 @@
-const filterVideogamesController = (videogames, property, value) => {
-  if (property === "origin") {
-    if (value !== "all") {
-      return videogames.filter(
-        (element) => element[property].toLowerCase() === value.toLowerCase()
-      );
-    }
+const filterVideogamesController = (videogames, filters) => {
+  console.log(filters);
+  if (filters.location !== "all") {
+    videogames = videogames.filter(
+      (element) =>
+        element.location.toLowerCase() === filters.location.toLowerCase()
+    );
   }
 
-  if (property === "genre") {
-    if (value !== "all") {
-      return videogames.filter((element) => {
-        return element.genres.some(
-          (genre) => genre.name.toLowerCase() === value.toLowerCase()
-        );
-      });
-    }
+  if (filters.genre !== "all") {
+    videogames = videogames.filter((element) => {
+      return element.genres.some(
+        (genre) => genre.name.toLowerCase() === filters.genre.toLowerCase()
+      );
+    });
   }
 
   return videogames;

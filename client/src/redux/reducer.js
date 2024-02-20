@@ -16,7 +16,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_PAGE:
-      console.log("aqui!!!!", action.payload);
       return {
         ...state,
         page: action.payload,
