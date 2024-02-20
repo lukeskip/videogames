@@ -9,24 +9,29 @@ import getQueryVariable from "../helpers/getQueryVariable.js";
 import Filters from "../components/Filters";
 import { setPage } from "../redux/actions.js";
 import { useDispatch } from "react-redux";
+import { PAGE_LIMIT } from "../config/config.js";
 
 export default function Videogames({ videogames }) {
   const location = useLocation();
   let page = getQueryVariable("page", location);
-  const pageSize = 20;
-  const loading = useSelector((state) => state.loading);
-  const pages = Math.ceil(videogames.length / pageSize);
-  const dispatch = useDispatch();
+  const [visibleGames, setVisibleGames] = useState([]);
 
+  const loading = useSelector((state) => state.loading);
+  const pages = Math.ceil(videogames.length / PAGE_LIMIT);
+  const dispatch = useDispatch();
   const getVisibleVideogames = () => {
     if (!page) {
       page = 1;
     }
     // dispatch(setPage(page));
-    const end = pageSize * Number(page);
-    const init = end - pageSize;
+    const end = PAGE_LIMIT * Number(page);
+    const init = end - PAGE_LIMIT;
     return videogames.slice(init, end);
   };
+
+  useEffect(() => {
+    setVisibleGames(getVisibleVideogames());
+  }, [videogames]);
 
   if (loading) {
     return <Loader />;
@@ -36,9 +41,13 @@ export default function Videogames({ videogames }) {
       <Pagination pages={pages} />
       <Filters videogames={videogames} />
       <div className={styles.videogames}>
-        {getVisibleVideogames().map((videogame) => {
-          return <Videogame key={videogame.id} videogame={videogame} />;
-        })}
+        {visibleGames.length ? (
+          visibleGames.map((videogame) => {
+            return <Videogame key={videogame.id} videogame={videogame} />;
+          })
+        ) : (
+          <h2>No hay videojuegos que cunmplan con los criterios</h2>
+        )}
       </div>
     </>
   );
