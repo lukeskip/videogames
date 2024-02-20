@@ -6,8 +6,9 @@ export default function Footer() {
   return (
     <div className={styles.footer}>
       <div className={stylesContainer.container}>
-        <div>Desarrollado por Cheko Milk</div>
+        <div>Desarrollado por Sergio "Cheko" Milk</div>
         <div>Proyecto Individual para Henry</div>
+        <div>Email: contacto@chekogarcia.com.mx</div>
       </div>
     </div>
   );
