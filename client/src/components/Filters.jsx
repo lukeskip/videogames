@@ -18,18 +18,17 @@ export default function Filters({ videogames }) {
     const newFilters = { ...filters, [property]: value };
     setFilters(newFilters);
     const filtered = filterVideogamesController(videogamesDefault, newFilters);
-
     dispatch(filterVideogames(filtered));
     dispatch(setPage(1));
   };
 
   const orderHandler = (property, order) => {
-    console.log("Handling location...");
     const orderedVideogames = orderVideogames(
       videogamesDefault,
       property,
       order
     );
+
     dispatch(filterVideogames(orderedVideogames));
     dispatch(setPage(1));
   };

@@ -33,8 +33,8 @@ export default function Videogames({ videogames }) {
   }
   return (
     <>
-      <Filters videogames={videogames} />
       <Pagination pages={pages} />
+      <Filters videogames={videogames} />
       <div className={styles.videogames}>
         {getVisibleVideogames().map((videogame) => {
           return <Videogame key={videogame.id} videogame={videogame} />;
