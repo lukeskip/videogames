@@ -1,0 +1,82 @@
+.loginWrapper{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:100vh;
+    position: relative;
+
+}
+.loginWrapper .logo{
+    width: 200px;
+    margin-top: 20px;
+}
+
+
+
+.loginFormWrapper{
+    width: 600px;
+    height: 300px;
+    background: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:solid 10px var(--grayLight);
+    border-top:40px solid var(--grayLight);
+    gap:20px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.loginFormWrapper::before{
+    content:"";
+    width:15px;
+    height:500px;
+    position:absolute;
+    top:-540px;
+    background-color: rgb(26, 26, 26);
+}
+
+.loginFormWrapper::after{
+    content:"";
+    width:25px;
+    height:30px;
+    position:absolute;
+    top:-70px;
+    background-color: rgb(26, 26, 26);
+
+}
+
+.cross{
+    width: 25%;
+}
+
+.cross img{
+    max-width: 100%;
+}
+
+.loginFormWrapper .form {
+    width: 40%;
+}
+
+.loginFormWrapper .form .fieldGroup{
+    margin-top: 10px;
+}
+
+.loginFormWrapper .form label{
+    color:var(--red);
+    font-family: var(--secondaryFont);
+    font-weight: 700;
+}
+
+.loginFormWrapper .form input{
+    background-color: var(--gray);
+    height: 45px;
+    width: 90%;
+    border:0;
+    border-radius: 4px;
+    font-family: var(--secondaryFont);
+    font-size: 1.3em;
+    padding-left: 10px;
+}
