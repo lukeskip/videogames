@@ -20,6 +20,7 @@ export default function SearchForm() {
   };
 
   const clearHandler = () => {
+    setInput("");
     getVideogames(null, dispatch);
   };
 
