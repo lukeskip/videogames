@@ -5,7 +5,7 @@ import Videogames from "../components/Videogames";
 import styles from "../css/Container.module.css";
 import Header from "../components/Header";
 import { useLocation, useNavigate } from "react-router-dom";
-import MainLayout from "../layouts/mainLayout";
+import MainLayout from "../layouts/MainLayout";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("change");
     const reduxLocal = localStorage.getItem("reduxState");
     if (!reduxLocal) {
       (async () => {
