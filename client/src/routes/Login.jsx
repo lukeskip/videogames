@@ -30,6 +30,7 @@ export default function Login() {
         response = await loginController(formData);
       }
 
+      console.log(response);
       if (response.access) {
         dispatch(setCredentials(response.access));
         navigate("/");

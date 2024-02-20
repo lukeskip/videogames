@@ -18,7 +18,6 @@ const registerController = async (formData) => {
 
   try {
     const response = await axios.post(`${HOST}/register`, formData);
-    console.log(response);
     return { access: response.data.access };
   } catch (error) {
     console.log(error);
