@@ -29,12 +29,19 @@ export default function SearchForm() {
     { label: "Limpiar", action: clearHandler },
   ];
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      formHandler();
+    }
+  };
+
   return (
     <div className={styles.form}>
       <input
         type="text"
         onChange={(event) => setInput(event.target.value)}
         value={input}
+        onKeyPress={handleKeyPress}
       />
       <Buttons buttons={buttons} />
     </div>
