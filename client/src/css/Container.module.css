@@ -5,8 +5,20 @@ body,html{
 }
 
 body{
+    background: linear-gradient(#000000, #000329);
+    background-attachment: fixed;
+    
+}
+body::before{
+    content:"";
     background-image: url(../assets/img/background.png);
-    background-color: black;
+    height: 50vh;
+    display: block;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 *{
     box-sizing: border-box;

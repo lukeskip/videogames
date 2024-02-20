@@ -3,6 +3,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routerVideogames = require("./routes/routerVideogames");
+const registerController = require("../src/controllers/registerController");
+const loginController = require("../src/controllers/loginController");
 
 require("./db.js");
 
@@ -27,6 +29,8 @@ server.use((req, res, next) => {
 });
 
 server.use("/videogames", routerVideogames);
+server.post("/login", loginController);
+server.post("/register", registerController);
 
 server.use((err, req, res, next) => {
   const status = err.status || 500;

@@ -5,6 +5,7 @@ const GET_VIDEOGAMES_SUCCESS = "GET_VIDEOGAMES_SUCCESS";
 const GET_VIDEOGAMES_ERROR = "GET_VIDEOGAMES_ERROR";
 const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
 const SET_PAGE = "SET_PAGE";
+const SET_CREDENCIALS = "SET_CREDENCIALS";
 
 const loadingMode = (payload) => {
   return {
@@ -40,6 +41,12 @@ const getVideogamesError = (payload) => {
     payload: payload,
   };
 };
+const setCredentials = (payload) => {
+  return {
+    type: SET_CREDENCIALS,
+    payload: payload,
+  };
+};
 
 export {
   LOADING_MODE,
@@ -47,9 +54,11 @@ export {
   GET_VIDEOGAMES_SUCCESS,
   GET_VIDEOGAMES_ERROR,
   FILTER_VIDEOGAMES,
+  SET_CREDENCIALS,
   setPage,
   filterVideogames,
   loadingMode,
   getVideogamesSuccess,
   getVideogamesError,
+  setCredentials,
 };

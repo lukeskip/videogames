@@ -17,13 +17,14 @@ export default function Videogames({ videogames }) {
   const [visibleGames, setVisibleGames] = useState([]);
 
   const loading = useSelector((state) => state.loading);
+  const pageState = useSelector((state) => state.page);
   const pages = Math.ceil(videogames.length / PAGE_LIMIT);
   const dispatch = useDispatch();
   const getVisibleVideogames = () => {
     if (!page) {
       page = 1;
     }
-    // dispatch(setPage(page));
+    dispatch(setPage(page));
     const end = PAGE_LIMIT * Number(page);
     const init = end - PAGE_LIMIT;
     return videogames.slice(init, end);
@@ -31,7 +32,7 @@ export default function Videogames({ videogames }) {
 
   useEffect(() => {
     setVisibleGames(getVisibleVideogames());
-  }, [videogames]);
+  }, [pageState, videogames]);
 
   if (loading) {
     return <Loader />;

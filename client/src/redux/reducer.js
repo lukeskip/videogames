@@ -4,6 +4,7 @@ import {
   GET_VIDEOGAMES_SUCCESS,
   GET_VIDEOGAMES_ERROR,
   FILTER_VIDEOGAMES,
+  SET_CREDENCIALS,
 } from "./actions";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   error: "",
   page: undefined,
   videogames: { videogames: [], videogamesDefault: [] },
+  credencials: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +27,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload,
+        error: "",
+      };
+      break;
+    case SET_CREDENCIALS:
+      return {
+        ...state,
+        credencials: action.payload,
         error: "",
       };
       break;

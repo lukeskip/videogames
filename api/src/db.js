@@ -37,7 +37,6 @@ Videogame.Genre = Videogame.belongsToMany(Genre, {
 });
 Genre.belongsToMany(Videogame, { through: "videogame_genre" });
 
-User.hasMany(Videogame);
 Videogame.belongsTo(User);
 
 User.hasMany(Videogame);
