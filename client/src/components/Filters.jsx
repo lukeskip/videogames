@@ -23,11 +23,7 @@ export default function Filters({ videogames }) {
   };
 
   const orderHandler = (property, order) => {
-    const orderedVideogames = orderVideogames(
-      videogamesDefault,
-      property,
-      order
-    );
+    const orderedVideogames = orderVideogames(videogames, property, order);
 
     dispatch(filterVideogames(orderedVideogames));
     dispatch(setPage(1));
