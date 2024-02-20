@@ -6,6 +6,7 @@ import Detail from "./routes/Detail";
 import CreateVideogameRoute from "./routes/CreateVideogameRoute";
 
 function App() {
+  localStorage.clear();
   return (
     <>
       <Loader></Loader>
