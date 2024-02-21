@@ -1,5 +1,4 @@
 const filterVideogamesController = (videogames, filters) => {
-  console.log(filters);
   if (filters.location !== "all") {
     videogames = videogames.filter(
       (element) =>

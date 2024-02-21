@@ -13,7 +13,6 @@ export default function SearchForm() {
   const formHandler = () => {
     if (input) {
       getVideogames({ name: input }, dispatch);
-      dispatch(setPage(1));
     } else {
       setError("Debes escribir un término de búsqueda");
     }

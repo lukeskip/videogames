@@ -42,6 +42,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: "",
+        page: 1,
         videogames: {
           videogames: action.payload,
           videogamesDefault: action.payload,

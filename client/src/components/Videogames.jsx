@@ -13,7 +13,7 @@ import { PAGE_LIMIT } from "../config/config.js";
 
 export default function Videogames({ videogames }) {
   const location = useLocation();
-  let page = getQueryVariable("page", location);
+  let page = useSelector((state) => state.page);
   const [visibleGames, setVisibleGames] = useState([]);
 
   const loading = useSelector((state) => state.loading);
@@ -21,10 +21,6 @@ export default function Videogames({ videogames }) {
   const pages = Math.ceil(videogames.length / PAGE_LIMIT);
   const dispatch = useDispatch();
   const getVisibleVideogames = () => {
-    if (!page) {
-      page = 1;
-    }
-    dispatch(setPage(page));
     const end = PAGE_LIMIT * Number(page);
     const init = end - PAGE_LIMIT;
     return videogames.slice(init, end);
@@ -32,7 +28,7 @@ export default function Videogames({ videogames }) {
 
   useEffect(() => {
     setVisibleGames(getVisibleVideogames());
-  }, [pageState, videogames]);
+  }, [page, videogames]);
 
   if (loading) {
     return <Loader />;

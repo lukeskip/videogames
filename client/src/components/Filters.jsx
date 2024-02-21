@@ -19,14 +19,11 @@ export default function Filters({ videogames }) {
     setFilters(newFilters);
     const filtered = filterVideogamesController(videogamesDefault, newFilters);
     dispatch(filterVideogames(filtered));
-    dispatch(setPage(1));
   };
 
   const orderHandler = (property, order) => {
     const orderedVideogames = orderVideogames(videogames, property, order);
-
     dispatch(filterVideogames(orderedVideogames));
-    dispatch(setPage(1));
   };
 
   useEffect(() => {

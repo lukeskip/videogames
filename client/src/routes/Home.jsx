@@ -36,11 +36,11 @@ export default function Home() {
     }
   }, [videogamesLocal]);
 
-  useEffect(() => {
-    if (!credentials) {
-      navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!credentials) {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   return (
     <MainLayout>
