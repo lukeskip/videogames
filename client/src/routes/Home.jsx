@@ -6,6 +6,8 @@ import styles from "../css/Container.module.css";
 import Header from "../components/Header";
 import { useLocation, useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
+import { setPage } from "../redux/actions.js";
+import getQueryVariable from "../helpers/getQueryVariable.js";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -19,14 +21,25 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const reduxLocal = localStorage.getItem("reduxState");
-    if (!reduxLocal) {
-      (async () => {
-        setVideogamesLocal(await getVideogames(null, dispatch));
-      })();
-    } else {
-      const videogamesLocal = JSON.parse(reduxLocal).videogames;
-      setVideogamesLocal(videogamesLocal);
+    if (!credentials) {
+      return navigate("/login");
+    }
+
+    const queryPage = getQueryVariable("page", location);
+    dispatch(setPage(queryPage ? queryPage : 1));
+  }, []);
+
+  useEffect(() => {
+    if (!credentials) {
+      const reduxLocal = localStorage.getItem("reduxState");
+      if (!reduxLocal) {
+        (async () => {
+          setVideogamesLocal(await getVideogames(null, dispatch));
+        })();
+      } else {
+        const videogamesLocal = JSON.parse(reduxLocal).videogames;
+        setVideogamesLocal(videogamesLocal);
+      }
     }
   }, [videogames]);
 
@@ -35,12 +48,6 @@ export default function Home() {
       navigate(`/?page=${page}`);
     }
   }, [videogamesLocal]);
-
-  // useEffect(() => {
-  //   if (!credentials) {
-  //     navigate("/login");
-  //   }
-  // }, []);
 
   return (
     <MainLayout>

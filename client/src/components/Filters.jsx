@@ -21,7 +21,7 @@ export default function Filters({ videogames }) {
     dispatch(filterVideogames(filtered));
   };
 
-  const orderHandler = (property, order) => {
+  const handleOrder = (property, order) => {
     const orderedVideogames = orderVideogames(videogames, property, order);
     dispatch(filterVideogames(orderedVideogames));
   };
@@ -39,7 +39,7 @@ export default function Filters({ videogames }) {
             name=""
             id=""
             onChange={(event) => {
-              orderHandler("rating", event.target.value);
+              handleOrder("rating", event.target.value);
             }}
           >
             <option value="asc">Ascendente</option>
@@ -52,7 +52,7 @@ export default function Filters({ videogames }) {
             name=""
             id=""
             onChange={(event) => {
-              orderHandler("name", event.target.value);
+              handleOrder("name", event.target.value);
             }}
           >
             <option value="asc">Ascendente</option>
