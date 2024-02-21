@@ -64,6 +64,24 @@ export default function Detail() {
             </div>
             <div className={stylesDetail.info}>
               <h1>{videogame.name}</h1>
+              <div className={stylesDetail.platforms}>
+                {videogame.platforms.map((platform) => {
+                  return (
+                    <span
+                      className={stylesDetail.platform}
+                      key={
+                        videogame.location === "api"
+                          ? platform.platform.id
+                          : platform.id
+                      }
+                    >
+                      {videogame.location === "api"
+                        ? platform.platform.name
+                        : platform.name}
+                    </span>
+                  );
+                })}
+              </div>
               <div
                 dangerouslySetInnerHTML={{ __html: videogame.description }}
                 className={stylesDetail.description}

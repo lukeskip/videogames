@@ -14,6 +14,13 @@
     width: 50%;
 }
 
+.detail .platforms .platform{
+    color:white;
+    font-family: var(--secondaryFont);
+    margin: 5px;
+    display: inline-block;
+}
+
 .detail .info .description{
     color:white;
     font-family: var(--secondaryFont);
@@ -21,4 +28,8 @@
 .detail h1{
     color: var(--red);
     font-family: var(--secondaryFont);
+}
+
+.detail .platforms{
+    color:var(--gray)
 }
