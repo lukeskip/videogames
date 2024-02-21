@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (!credentials) {
+    if (credentials) {
       const reduxLocal = localStorage.getItem("reduxState");
       if (!reduxLocal) {
         (async () => {
