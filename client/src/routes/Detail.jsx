@@ -6,12 +6,13 @@ import stylesVideogame from "../css/Videogame.module.css";
 import Header from "../components/Header";
 import getDetailVideogame from "../controllers/getDetailVideogameController.js";
 import Loader from "../components/Loader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
 export default function Detail() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [videogame, setVideogame] = useState();
   const { id } = useParams();
   const credentials = useSelector((state) => state.credentials);

@@ -1,5 +1,5 @@
 const getApiResults = require("../controllers/getApiResults");
-const { Genre } = require("../db");
+const { Genre, Platform } = require("../db");
 const { API_HOST, API_KEY } = process.env;
 const saveGenresToDB = async () => {
   try {
@@ -14,6 +14,16 @@ const saveGenresToDB = async () => {
 
         if (created) {
           console.log(`${newGenre} was created`);
+        }
+      }
+
+      for (platform of videogame.platforms) {
+        const [newPlatform, created] = await Platform.findOrCreate({
+          where: { name: platform.platform.name },
+        });
+
+        if (created) {
+          console.log(`${newPlatform} was created`);
         }
       }
     }

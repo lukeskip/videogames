@@ -5,6 +5,7 @@ import SearchForm from "./SearchForm";
 import stylesContainer from "../css/Container.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Menu from "../components/Menu";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ export default function Header() {
           alt=""
           onClick={() => navigate(`/`)}
         />
+        <Menu />
+
         {location.pathname === "/" && <SearchForm />}
       </div>
     </div>

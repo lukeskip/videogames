@@ -16,7 +16,7 @@ const postVideogame = async (object) => {
       //   },
       // }
     );
-    console.log(request.data);
+    return request.data;
   } catch (error) {
     console.log(error.message);
   }

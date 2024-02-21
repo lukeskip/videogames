@@ -1,4 +1,4 @@
-const { Videogame, Genre } = require("../db.js");
+const { Videogame, Genre, Platform } = require("../db.js");
 
 const postVideogame = async (req, res) => {
   console.log("posting videogame...");
@@ -20,20 +20,25 @@ const postVideogame = async (req, res) => {
         },
         defaults: {
           description,
-          platforms,
           image,
           rating,
         },
       });
 
       if (created) {
-        const genresArray = genres.split(",");
-        genresArray.map(async (genre) => {
+        for (genre of genres) {
           const [genreDB, createdGenre] = await Genre.findOrCreate({
             where: { name: genre },
           });
           videogame.addGenre(genreDB);
-        });
+        }
+
+        for (platform of platforms) {
+          const [platformDB, createdPlatform] = await Platform.findOrCreate({
+            where: { name: platform },
+          });
+          videogame.addPlatform(platformDB);
+        }
 
         return res.status(201).json({ message: `${videogame.name} created` });
       }

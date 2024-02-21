@@ -1,6 +1,6 @@
 const axios = require("axios");
 const getApiResults = require("./getApiResults");
-const { Videogame, Genre } = require("../db");
+const { Videogame, Genre, Platform } = require("../db");
 const { Op } = require("sequelize");
 const cleanProperties = require("../helpers/cleanProperties");
 const { API_HOST, API_KEY } = process.env;
@@ -45,7 +45,7 @@ const getVideogames = async (req, res) => {
       };
     }
     videogamesDB = await Videogame.findAll({
-      include: Genre,
+      include: [Genre, Platform],
       ...options,
     });
 

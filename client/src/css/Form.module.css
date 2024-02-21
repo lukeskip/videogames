@@ -31,7 +31,7 @@
     width: 80%;
 }
 
-.form input{
+.form input,.form select{
     background: var(--grayLight);
     height: 65px;
     width: 90%;
@@ -40,6 +40,11 @@
     font-family: var(--secondaryFont);
     font-size: 1.3em;
     padding-left: 10px;
+}
+
+.form select{
+    height: 200px ;
+    width:80%;
 }
 
 

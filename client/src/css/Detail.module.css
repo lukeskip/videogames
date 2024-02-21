@@ -6,7 +6,8 @@
 .detail .image{
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    padding-right: 40px;
 }
 
 .detail .info{
