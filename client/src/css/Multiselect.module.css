@@ -1,0 +1,8 @@
+.tags{
+    display:flex;
+}
+.tag{
+    background-color: var(--red);
+    padding: 10px 5px;
+    
+}
