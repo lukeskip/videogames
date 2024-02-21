@@ -5,6 +5,7 @@ import {
   GET_VIDEOGAMES_ERROR,
   FILTER_VIDEOGAMES,
   SET_CREDENTIALS,
+  RESET_STORE,
 } from "./actions";
 
 const initialState = {
@@ -58,6 +59,11 @@ const reducer = (state = initialState, action) => {
           ...state.videogames,
           videogames: action.payload,
         },
+      };
+      break;
+    case RESET_STORE:
+      return {
+        ...initialState,
       };
       break;
 

@@ -6,6 +6,7 @@ const GET_VIDEOGAMES_ERROR = "GET_VIDEOGAMES_ERROR";
 const FILTER_VIDEOGAMES = "FILTER_VIDEOGAMES";
 const SET_PAGE = "SET_PAGE";
 const SET_CREDENTIALS = "SET_CREDENTIALS";
+const RESET_STORE = "RESET_STORE";
 
 const loadingMode = (payload) => {
   return {
@@ -47,6 +48,11 @@ const setCredentials = (payload) => {
     payload: payload,
   };
 };
+const resetStore = () => {
+  return {
+    type: RESET_STORE,
+  };
+};
 
 export {
   LOADING_MODE,
@@ -55,6 +61,8 @@ export {
   GET_VIDEOGAMES_ERROR,
   FILTER_VIDEOGAMES,
   SET_CREDENTIALS,
+  RESET_STORE,
+  resetStore,
   setPage,
   filterVideogames,
   loadingMode,
