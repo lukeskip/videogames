@@ -9,13 +9,6 @@ import { useSelector } from "react-redux";
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const credencials = useSelector((state) => state.credencials);
-
-  useEffect(() => {
-    if (!credencials.email) {
-      navigate("/login");
-    }
-  }, []);
 
   return (
     <div className={styles.header}>

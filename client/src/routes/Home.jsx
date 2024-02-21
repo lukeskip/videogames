@@ -9,6 +9,7 @@ import MainLayout from "../layouts/MainLayout";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const credencials = useSelector((state) => state.credencials);
   const { videogames } = useSelector((state) => state.videogames);
   const loading = useSelector((state) => state.loading);
   const page = useSelector((state) => state.page);
@@ -18,7 +19,6 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("change");
     const reduxLocal = localStorage.getItem("reduxState");
     if (!reduxLocal) {
       (async () => {
@@ -35,6 +35,12 @@ export default function Home() {
       navigate(`/?page=${page}`);
     }
   }, [videogamesLocal]);
+
+  // useEffect(() => {
+  //   if (!credencials) {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   return (
     <MainLayout>
