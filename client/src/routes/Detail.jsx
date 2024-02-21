@@ -7,18 +7,23 @@ import Header from "../components/Header";
 import getDetailVideogame from "../controllers/getDetailVideogameController.js";
 import Loader from "../components/Loader";
 import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
 export default function Detail() {
   const dispatch = useDispatch();
   const [videogame, setVideogame] = useState();
   const { id } = useParams();
+  const credencials = useSelector((state) => state.credencials);
 
   const generateRandom = () => {
     return Math.floor(Math.random() * 7) - 3;
   };
 
   useEffect(() => {
+    if (!credencials) {
+      navigate("/login");
+    }
     return async () => {
       const getVideogame = await getDetailVideogame(id, dispatch);
       setVideogame(getVideogame);

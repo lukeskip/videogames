@@ -4,9 +4,11 @@ import stylesContainer from "../css/Container.module.css";
 import Buttons from "../components/Buttons";
 import Header from "../components/Header";
 import postVideogame from "../controllers/postVideogame.js";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function CreateVideogameRoute() {
   const [formData, setFormData] = useState({});
+  const credencials = useSelector((state) => state.credencials);
   const formHandler = async () => {
     console.log("Sending form...");
     try {
@@ -26,6 +28,12 @@ export default function CreateVideogameRoute() {
   useEffect(() => {
     console.log(formData);
   }, [formData]);
+
+  useEffect(() => {
+    if (!credencials) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <section className={stylesContainer.container}>
