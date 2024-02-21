@@ -14,14 +14,14 @@ export default function Detail() {
   const dispatch = useDispatch();
   const [videogame, setVideogame] = useState();
   const { id } = useParams();
-  const credencials = useSelector((state) => state.credencials);
+  const credentials = useSelector((state) => state.credentials);
 
   const generateRandom = () => {
     return Math.floor(Math.random() * 7) - 3;
   };
 
   useEffect(() => {
-    if (!credencials) {
+    if (!credentials) {
       navigate("/login");
     }
     return async () => {

@@ -9,7 +9,7 @@ import MainLayout from "../layouts/MainLayout";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const credencials = useSelector((state) => state.credencials);
+  const credentials = useSelector((state) => state.credentials);
   const { videogames } = useSelector((state) => state.videogames);
   const loading = useSelector((state) => state.loading);
   const page = useSelector((state) => state.page);
@@ -37,7 +37,7 @@ export default function Home() {
   }, [videogamesLocal]);
 
   useEffect(() => {
-    if (!credencials) {
+    if (!credentials) {
       navigate("/login");
     }
   }, []);

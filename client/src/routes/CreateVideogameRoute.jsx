@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function CreateVideogameRoute() {
   const [formData, setFormData] = useState({});
-  const credencials = useSelector((state) => state.credencials);
+  const credentials = useSelector((state) => state.credentials);
   const formHandler = async () => {
     console.log("Sending form...");
     try {
@@ -30,7 +30,7 @@ export default function CreateVideogameRoute() {
   }, [formData]);
 
   useEffect(() => {
-    if (!credencials) {
+    if (!credentials) {
       navigate("/login");
     }
   }, []);
