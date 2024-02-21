@@ -1,8 +1,10 @@
 .filters{
     margin: auto;
     display: flex;
-    justify-content:space-around;
+    justify-content:center;
     margin: 40px;
+    gap:20px;
+    flex-wrap: wrap;
  }
  
  .filters label{
