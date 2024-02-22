@@ -7,6 +7,12 @@ const registerController = async (formData) => {
   if (!emailRegext.test(formData.email))
     return { access: false, message: "email inválido" };
 
+  if (!formData.password)
+    return {
+      access: false,
+      message: "Debes escribir una contraseña",
+    };
+
   if (formData.password.length < 6)
     return {
       access: false,
@@ -20,8 +26,9 @@ const registerController = async (formData) => {
     const response = await axios.post(`${HOST}/register`, formData);
     return { access: response.data.access };
   } catch (error) {
-    console.log(error);
-    return { access: error.response.access, message: error.response.message };
+    return error.response.data
+      ? { access: error.response.access, message: error.response.message }
+      : { access: false, message: error.message };
   }
 };
 
