@@ -76,30 +76,62 @@ export default function CreateVideogameRoute() {
       <section className={stylesContainer.container}>
         <div className={`${styles.form} ${styles.column}`}>
           <div className={styles.fieldGroup}>
-            <label htmlFor="name" styles="">
-              Nombre:
-            </label>
-            <input
-              id="name"
-              type="text"
-              value={formData.name ? formData.name : ""}
-              onChange={(event) =>
-                setFormData({ ...formData, name: event.target.value })
-              }
-            />
+            <div>
+              <label htmlFor="name" styles="">
+                Nombre:
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={formData.name ? formData.name : ""}
+                onChange={(event) =>
+                  setFormData({ ...formData, name: event.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label htmlFor="description" styles="">
+                Release:
+              </label>
+              <input
+                id="release"
+                type="date"
+                value={formData.release ? formData.release : ""}
+                onChange={(event) =>
+                  setFormData({ ...formData, release: event.target.value })
+                }
+              />
+            </div>
           </div>
           <div className={styles.fieldGroup}>
-            <label htmlFor="name" styles="">
-              Imagen:
-            </label>
-            <input
-              id="image"
-              type="text"
-              value={formData.image ? formData.image : ""}
-              onChange={(event) =>
-                setFormData({ ...formData, image: event.target.value })
-              }
-            />
+            <div>
+              <label htmlFor="name" styles="">
+                Imagen:
+              </label>
+              <input
+                id="image"
+                type="text"
+                value={formData.image ? formData.image : ""}
+                onChange={(event) =>
+                  setFormData({ ...formData, image: event.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label htmlFor="rating" styles="">
+                Rating:
+              </label>
+              <input
+                placeholder="del 1 al 5"
+                id="rating"
+                type="number"
+                step=".1"
+                value={formData.rating ? formData.rating : ""}
+                onChange={(event) =>
+                  setFormData({ ...formData, rating: event.target.value })
+                }
+              />
+            </div>
           </div>
           {/* <div className={styles.fieldGroup}>
           <label htmlFor="name" styles="">
@@ -114,63 +146,41 @@ export default function CreateVideogameRoute() {
           />
         </div> */}
           <div className={styles.fieldGroup}>
-            <label htmlFor="description" styles="">
-              Descripción:
-            </label>
-            <input
-              id="description"
-              type="text"
-              value={formData.description ? formData.description : ""}
-              onChange={(event) =>
-                setFormData({ ...formData, description: event.target.value })
-              }
-            />
-          </div>
-          <div className={styles.fieldGroup}>
-            <label htmlFor="description" styles="">
-              Release:
-            </label>
-            <input
-              id="release"
-              type="date"
-              value={formData.release ? formData.release : ""}
-              onChange={(event) =>
-                setFormData({ ...formData, release: event.target.value })
-              }
-            />
+            <div>
+              <label htmlFor="description" styles="">
+                Descripción:
+              </label>
+              <textarea
+                id="description"
+                type="text"
+                onChange={(event) =>
+                  setFormData({ ...formData, description: event.target.value })
+                }
+              >
+                {formData.description ? formData.description : ""}
+              </textarea>
+            </div>
           </div>
 
           <div className={styles.fieldGroup}>
-            <Multiselect
-              array={genres}
-              action={multiSelectHandle}
-              property="genres"
-              label="Género"
-            />
+            <div>
+              <Multiselect
+                array={genres}
+                action={multiSelectHandle}
+                property="genres"
+                label="Género"
+              />
+            </div>
+            <div>
+              <Multiselect
+                array={platforms}
+                action={multiSelectHandle}
+                property="platforms"
+                label="Plataforma"
+              />
+            </div>
           </div>
 
-          <div className={styles.fieldGroup}>
-            <label htmlFor="rating" styles="">
-              Rating:
-            </label>
-            <input
-              placeholder="del 1 al 5"
-              id="rating"
-              type="text"
-              value={formData.rating ? formData.rating : ""}
-              onChange={(event) =>
-                setFormData({ ...formData, rating: event.target.value })
-              }
-            />
-          </div>
-          <div className={styles.fieldGroup}>
-            <Multiselect
-              array={platforms}
-              action={multiSelectHandle}
-              property="platforms"
-              label="Plataforma"
-            />
-          </div>
           <div className={styles.submitWrapper}>
             <Buttons big={true} buttons={buttons} />
           </div>

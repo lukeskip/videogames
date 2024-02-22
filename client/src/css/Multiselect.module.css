@@ -4,10 +4,6 @@
     width: 100%;
 }
 
-.multiselect .searchWrapper{
-    border-top:2px solid var(--gray)
-}
-
 .multiselect .searchWrapper input{
     width:100%;
 } 

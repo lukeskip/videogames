@@ -1,7 +1,8 @@
 @import './_variables.css';
 
 .form{
-    border:solid 5px var(--grayLight);
+    border:solid 10px var(--grayLight);
+    border-top:40px solid var(--grayLight);
     background: black;
     padding: 10px;
     display: flex;
@@ -17,19 +18,29 @@
     flex-wrap: wrap;
 }
 
+.form .fieldGroup{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2%;
+}
+
+.form .fieldGroup >div{
+    flex: 1 1 0px;
+}
 
 .form .fieldGroup label{
     width: 20%;
     text-align: right;
     padding: 10px;
+    font-weight: 700;
 }
 
-.form .fieldGroup input{
+.form .fieldGroup input,.form .fieldGroup textarea{
     width: 100%;
 }
 
-.form input,.form select{
-    background: var(--grayLight);
+.form input,.form select,textarea{
+    background: var(--grayDeep);
     height: 65px;
     width: 90%;
     border:0;
@@ -37,6 +48,10 @@
     font-family: var(--secondaryFont);
     font-size: 1.3em;
     padding-left: 10px;
+}
+
+.form textarea{
+    height: 100px;
 }
 
 .form select{
