@@ -7,16 +7,22 @@ const loginController = async (formData) => {
   const emailRegext = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
   if (!emailRegext.test(formData.email))
-    return { access: false, message: "email inválido" };
+    return { access: false, message: "Email inválido" };
 
   if (!emailRegext.test(formData.email))
-    return { access: false, message: "email inválido" };
+    return { access: false, message: "Email inválido" };
+
+  if (!formData.password)
+    return { access: false, message: "Tienes que escribir un password" };
 
   try {
     const response = await axios.post(`${HOST}/login`, formData);
     return { access: response.data.access };
   } catch (error) {
-    return { access: error.response.access, message: error.response.message };
+    console.log(error);
+    return error.response.data
+      ? { access: error.response.access, message: error.response.message }
+      : { access: false, message: error.message };
   }
 
   return results;

@@ -37,6 +37,7 @@ export default function Login() {
       }
     } catch (error) {
       console.log(error);
+      setErrors(error.message);
     }
   };
   const buttonsLogin = [

@@ -12,6 +12,8 @@
 .loginWrapper .error{
     color:var(--red);
     font-family: var(--secondaryFont);
+    margin-top: 10px;
+    font-weight: 700;
 }
 .loginWrapper .logo{
     width: 200px;
@@ -32,6 +34,9 @@
     gap:10px;
     border-radius: 3px;
     position: relative;
+    box-shadow: -12px -10px 21px 0px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -12px -10px 21px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: -12px -10px 21px 0px rgba(0,0,0,0.55);
 }
 
 .loginFormWrapper::before{
