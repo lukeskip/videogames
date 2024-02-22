@@ -1,10 +1,14 @@
 import axios from "axios";
-import { loadingMode } from "../redux/actions";
+import { loadingMode, setVideogamesError } from "../redux/actions";
 const getDetailVideogame = async (id, dispatch) => {
-  dispatch(loadingMode(true));
-  const videogame = await axios(`http://localhost:3001/videogames/${id}`);
-  dispatch(loadingMode(false));
-  return videogame.data;
+  try {
+    dispatch(loadingMode(true));
+    const videogame = await axios(`http://localhost:3001/videogames/${id}`);
+    dispatch(loadingMode(false));
+    return videogame.data;
+  } catch (error) {
+    dispatch(setVideogamesError(error.message));
+  }
 };
 
 export default getDetailVideogame;

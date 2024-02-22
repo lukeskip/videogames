@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   loadingMode,
   getVideogamesSuccess,
-  getVideogamesError,
+  setVideogamesError,
   setPage,
 } from "../redux/actions";
 
@@ -19,7 +19,7 @@ const getVideogames = async (terms, dispatch) => {
     const errorMessage = error.response.data
       ? error.response.data.message
       : error.message;
-    dispatch(getVideogamesError(errorMessage));
+    dispatch(setVideogamesError(errorMessage));
   }
 };
 

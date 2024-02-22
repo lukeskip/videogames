@@ -2,10 +2,10 @@ import {
   LOADING_MODE,
   SET_PAGE,
   GET_VIDEOGAMES_SUCCESS,
-  GET_VIDEOGAMES_ERROR,
   FILTER_VIDEOGAMES,
   SET_CREDENTIALS,
   RESET_STORE,
+  SET_VIDEOGAMES_ERROR,
 } from "./actions";
 
 const initialState = {
@@ -67,7 +67,7 @@ const reducer = (state = initialState, action) => {
       };
       break;
 
-    case GET_VIDEOGAMES_ERROR:
+    case SET_VIDEOGAMES_ERROR:
       return {
         ...state,
         loading: false,

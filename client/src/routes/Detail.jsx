@@ -16,6 +16,7 @@ export default function Detail() {
   const [videogame, setVideogame] = useState();
   const { id } = useParams();
   const credentials = useSelector((state) => state.credentials);
+  const error = useSelector((state) => state.error);
 
   const generateRandom = () => {
     return Math.floor(Math.random() * 7) - 3;
@@ -26,8 +27,12 @@ export default function Detail() {
       navigate("/login");
     }
     return async () => {
-      const getVideogame = await getDetailVideogame(id, dispatch);
-      setVideogame(getVideogame);
+      try {
+        const getVideogame = await getDetailVideogame(id, dispatch);
+        setVideogame(getVideogame);
+      } catch (error) {
+        console.log(error);
+      }
     };
   }, []);
 
@@ -35,6 +40,7 @@ export default function Detail() {
     <MainLayout>
       <section className={styles.container}>
         <Loader />
+        {error && <h2>{error}</h2>}
         {videogame && (
           <div className={stylesDetail.detail}>
             <div className={stylesDetail.image}>
