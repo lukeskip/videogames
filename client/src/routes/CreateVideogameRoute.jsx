@@ -16,15 +16,22 @@ export default function CreateVideogameRoute() {
   const [formData, setFormData] = useState({});
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
+  const [errors, setErrors] = useState({});
   const credentials = useSelector((state) => state.credentials);
   const navigate = useNavigate();
 
   const formHandler = async () => {
     console.log("Sending form...");
     try {
-      postVideogame(formData);
+      const response = await postVideogame(formData);
+      console.log(response);
+      if (response.status) {
+        navigate(`/detail/${response.videogame.id}`);
+      } else {
+        setErrors(response.errors);
+      }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
 
@@ -75,6 +82,9 @@ export default function CreateVideogameRoute() {
     <MainLayout>
       <section className={stylesContainer.container}>
         <div className={`${styles.form} ${styles.column}`}>
+          {errors.api_error && (
+            <div className={styles.error}>{errors.api_error}</div>
+          )}
           <div className={styles.fieldGroup}>
             <div>
               <label htmlFor="name" styles="">
@@ -88,6 +98,9 @@ export default function CreateVideogameRoute() {
                   setFormData({ ...formData, name: event.target.value })
                 }
               />
+              {errors.name && (
+                <div className={styles.error}>{errors.name.message}</div>
+              )}
             </div>
             <div>
               <label htmlFor="description" styles="">
@@ -101,6 +114,9 @@ export default function CreateVideogameRoute() {
                   setFormData({ ...formData, release: event.target.value })
                 }
               />
+              {errors.release && (
+                <div className={styles.error}>{errors.release.message}</div>
+              )}
             </div>
           </div>
           <div className={styles.fieldGroup}>
@@ -116,6 +132,9 @@ export default function CreateVideogameRoute() {
                   setFormData({ ...formData, image: event.target.value })
                 }
               />
+              {errors.image && (
+                <div className={styles.error}>{errors.image.message}</div>
+              )}
             </div>
             <div>
               <label htmlFor="rating" styles="">
@@ -131,20 +150,12 @@ export default function CreateVideogameRoute() {
                   setFormData({ ...formData, rating: event.target.value })
                 }
               />
+              {errors.rating && (
+                <div className={styles.error}>{errors.rating.message}</div>
+              )}
             </div>
           </div>
-          {/* <div className={styles.fieldGroup}>
-          <label htmlFor="name" styles="">
-            Imagen:
-          </label>
-          <input
-            id="name"
-            type="file"
-            onChange={(event) =>
-              setFormData({ ...formData, image: event.target.files[0] })
-            }
-          />
-        </div> */}
+
           <div className={styles.fieldGroup}>
             <div>
               <label htmlFor="description" styles="">
@@ -156,9 +167,11 @@ export default function CreateVideogameRoute() {
                 onChange={(event) =>
                   setFormData({ ...formData, description: event.target.value })
                 }
-              >
-                {formData.description ? formData.description : ""}
-              </textarea>
+                value={formData.description ? formData.description : ""}
+              ></textarea>
+              {errors.description && (
+                <div className={styles.error}>{errors.description.message}</div>
+              )}
             </div>
           </div>
 
@@ -170,6 +183,9 @@ export default function CreateVideogameRoute() {
                 property="genres"
                 label="Género"
               />
+              {errors.genres && (
+                <div className={styles.error}>{errors.genres.message}</div>
+              )}
             </div>
             <div>
               <Multiselect
@@ -178,6 +194,9 @@ export default function CreateVideogameRoute() {
                 property="platforms"
                 label="Plataforma"
               />
+              {errors.platforms && (
+                <div className={styles.error}>{errors.platforms.message}</div>
+              )}
             </div>
           </div>
 

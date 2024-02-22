@@ -39,6 +39,11 @@
     width: 100%;
 }
 
+.form .error{
+    color:var(--red);
+
+}
+
 .form input,.form select,textarea{
     background: var(--grayDeep);
     height: 65px;
@@ -62,7 +67,7 @@
 
 
 .form label{
-    color:var(--red);
+    color:var(--grayLight);
     font-family: var(--secondaryFont);
     font-size: 1.3em;
 }

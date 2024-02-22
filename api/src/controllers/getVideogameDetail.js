@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Videogame, Genre } = require("../db");
+const { Videogame, Genre, Platform } = require("../db");
 const getVideogameDetail = async (req, res) => {
   const { id } = req.params;
   let videogame = undefined;
@@ -11,8 +11,8 @@ const getVideogameDetail = async (req, res) => {
       );
       videogame = { ...data, image: data.background_image, location: "api" };
     } else {
-      videogame = await Videogame.findByPk(id, { include: Genre });
-      videogame = { ...videogame, location: "db" };
+      videogame = await Videogame.findByPk(id, { include: [Genre, Platform] });
+      videogame = { ...videogame.dataValues, location: "db" };
     }
   } catch (error) {
     console.log(error.message);
@@ -21,7 +21,7 @@ const getVideogameDetail = async (req, res) => {
   if (!videogame) {
     return res.status(404).json({ message: "Video juego no encontrado" });
   }
-
+  console.log(videogame);
   return res.json(videogame);
 };
 

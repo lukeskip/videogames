@@ -1,10 +1,9 @@
 const { Videogame, Genre, Platform } = require("../db.js");
 
 const postVideogame = async (req, res) => {
-  console.log("posting videogame...");
   const { name, description, platforms, image, release, rating, genres } =
     req.body;
-  console.log([name, description, platforms, image, release, rating, genres]);
+
   if (
     [name, description, platforms, image, release, rating, genres].every(
       (x, index) => {
@@ -40,17 +39,24 @@ const postVideogame = async (req, res) => {
           videogame.addPlatform(platformDB);
         }
 
-        return res.status(201).json({ message: `${videogame.name} created` });
+        return res.status(201).json({
+          status: true,
+          message: `${videogame.name} created`,
+          videogame: videogame,
+        });
       }
 
-      return res
-        .status(200)
-        .json({ message: `${videogame.name} already in the database` });
+      return res.status(200).json({
+        status: false,
+        message: `${videogame.name} already in the database`,
+      });
     } catch (error) {
-      return res.status(500).json({ message: error.message });
+      return res.status(500).json({ status: false, message: error.message });
     }
   } else {
-    return res.status(500).json({ message: "Fields are missing" });
+    return res
+      .status(500)
+      .json({ status: false, message: "Fields are missing" });
   }
 };
 
