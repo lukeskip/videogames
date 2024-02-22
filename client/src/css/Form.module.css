@@ -17,9 +17,6 @@
     flex-wrap: wrap;
 }
 
-.form .fieldGroup{
-    display: flex;
-}
 
 .form .fieldGroup label{
     width: 20%;
@@ -28,7 +25,7 @@
 }
 
 .form .fieldGroup input{
-    width: 80%;
+    width: 100%;
 }
 
 .form input,.form select{

@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import getGenres from "../controllers/getGenres";
 import getPlatforms from "../controllers/getPlatforms";
+import Multiselect from "../components/Multiselect";
 
 import MainLayout from "../layouts/MainLayout";
 
@@ -41,6 +42,11 @@ export default function CreateVideogameRoute() {
       (option) => option.value
     );
     setFormData({ ...formData, platforms });
+  };
+
+  const multiSelectHandle = (array, property) => {
+    console.log(array, property);
+    setFormData({ ...formData, [property]: array });
   };
 
   const clearHandler = () => {
@@ -135,24 +141,12 @@ export default function CreateVideogameRoute() {
           </div>
 
           <div className={styles.fieldGroup}>
-            <label htmlFor="genres" styles="">
-              Géneros:
-            </label>
-            <select
-              id="genres"
-              multiple
-              onChange={genreSelectionHandle}
-              value={formData.genres ? formData.genres : ""}
-            >
-              {genres &&
-                genres.map((genre) => {
-                  return (
-                    <option key={genre.id} value={genre.name}>
-                      {genre.name}
-                    </option>
-                  );
-                })}
-            </select>
+            <Multiselect
+              array={genres}
+              action={multiSelectHandle}
+              property="genres"
+              label="Género"
+            />
           </div>
 
           <div className={styles.fieldGroup}>
@@ -170,25 +164,12 @@ export default function CreateVideogameRoute() {
             />
           </div>
           <div className={styles.fieldGroup}>
-            <label htmlFor="platforms" styles="">
-              Plataformas:
-            </label>
-
-            <select
-              id="platforms"
-              multiple
-              onChange={platformSelectionHandle}
-              value={formData.platforms ? formData.platforms : ""}
-            >
-              {platforms &&
-                platforms.map((platform) => {
-                  return (
-                    <option key={platform.id} value={platform.name}>
-                      {platform.name}
-                    </option>
-                  );
-                })}
-            </select>
+            <Multiselect
+              array={platforms}
+              action={multiSelectHandle}
+              property="platforms"
+              label="Plataforma"
+            />
           </div>
           <div className={styles.submitWrapper}>
             <Buttons big={true} buttons={buttons} />

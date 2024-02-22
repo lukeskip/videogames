@@ -1,8 +1,54 @@
+
+
+.multiselect{
+    width: 100%;
+}
+
+.multiselect .searchWrapper{
+    border-top:2px solid var(--gray)
+}
+
+.multiselect .searchWrapper input{
+    width:100%;
+} 
+
 .tags{
     display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 .tag{
-    background-color: var(--red);
-    padding: 10px 5px;
-    
+    background-color: var(--gray);
+    padding: 0 5px;
+    border-radius: 2px;
+    margin: 10px;
+    margin-left: 0;
+    height:30px;
+    line-height: 30px;
+    color:white;
+    position: relative;
+    cursor: pointer;
 }
+
+.tag.selected::after{
+    content:"x";
+    color:var(--gray);
+    width:16px;
+    height: 16px;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 100%;
+    position: absolute;
+    top:5px;
+    right:5px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: 700;
+    font-size: .8em;
+}
+
+.tag.selected{
+    padding-right: 30px;
+    background-color: var(--red);    
+}
+
