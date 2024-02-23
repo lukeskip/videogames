@@ -22,6 +22,28 @@ export default function Detail() {
     return Math.floor(Math.random() * 7) - 3;
   };
 
+  const getFormattedDate = (release) => {
+    const months = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+    const releaseDate = new Date(release + "T00:00:00");
+    const day = releaseDate.getDate();
+    const month = releaseDate.getMonth();
+    const year = releaseDate.getFullYear();
+    return `${day} de ${months[month]} de ${year}`;
+  };
+
   useEffect(() => {
     if (!credentials) {
       navigate("/login");
@@ -87,6 +109,9 @@ export default function Detail() {
                     </span>
                   );
                 })}
+              </div>
+              <div className={stylesDetail.release}>
+                {getFormattedDate(videogame.release)}
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: videogame.description }}
