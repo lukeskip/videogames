@@ -7,7 +7,8 @@ import { setPage } from "../redux/actions.js";
 
 export default function Pagination({ pages }) {
   const location = useLocation();
-  const page = getQueryVariable("page", location);
+  const pageQuery = getQueryVariable("page", location);
+  const page = pageQuery ? pageQuery : 1;
   const array = [];
   const dispatch = useDispatch();
   const getActive = (item) => {
@@ -18,6 +19,16 @@ export default function Pagination({ pages }) {
   }
   return (
     <div className={styles.pagination}>
+      {page > 1 && (
+        <Link
+          className={styles.page}
+          to={`/?page=${Number(page) - 1}`}
+          onClick={() => dispatch(setPage(Number(page) - 1))}
+        >
+          {"<"}
+        </Link>
+      )}
+
       {pages > 1 &&
         array.map((item) => {
           return (
@@ -31,6 +42,15 @@ export default function Pagination({ pages }) {
             </Link>
           );
         })}
+      {page < pages && (
+        <Link
+          className={styles.page}
+          to={`/?page=${Number(page) + 1}`}
+          onClick={() => dispatch(setPage(Number(page) + 1))}
+        >
+          {">"}
+        </Link>
+      )}
     </div>
   );
 }
