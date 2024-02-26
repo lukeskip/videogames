@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routerVideogames = require("./routes/routerVideogames");
+const routerGenres = require("./routes/routerGenres");
+const routerPlatforms = require("./routes/routerPlatforms");
 const registerController = require("../src/controllers/registerController");
 const loginController = require("../src/controllers/loginController");
 
@@ -31,8 +33,9 @@ server.use((req, res, next) => {
 });
 
 server.use("/videogames", routerVideogames);
-server.get("/genres", getGenres);
-server.get("/platforms", getPlatforms);
+server.use("/genres", routerGenres);
+server.use("/platforms", routerPlatforms);
+
 server.post("/login", loginController);
 server.post("/register", registerController);
 
