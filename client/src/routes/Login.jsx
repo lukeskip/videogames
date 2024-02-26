@@ -34,9 +34,9 @@ export default function Login() {
         navigate("/");
       } else {
         setErrors(response.message);
+        console.log("hola!!!", response);
       }
     } catch (error) {
-      console.log(error);
       setErrors(error.message);
     }
   };

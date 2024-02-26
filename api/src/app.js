@@ -1,6 +1,4 @@
 const express = require("express");
-const getGenres = require("./controllers/getGenres");
-const getPlatforms = require("./controllers/getPlatforms");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
