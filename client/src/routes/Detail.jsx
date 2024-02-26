@@ -81,6 +81,7 @@ export default function Detail() {
                 <div className={stylesVideogame.title}>
                   <h3>{videogame.name}</h3>
                 </div>
+                <div className={stylesVideogame.rating}>{videogame.rating}</div>
                 <div className={stylesVideogame.portrait}>
                   <img
                     src={videogame.image}
