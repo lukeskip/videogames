@@ -13,7 +13,7 @@ const videogame = (sequelize) => {
       allowNull: false,
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     description: {
