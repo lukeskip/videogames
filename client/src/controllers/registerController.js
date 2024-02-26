@@ -27,7 +27,7 @@ const registerController = async (formData) => {
     return { access: response.data.access };
   } catch (error) {
     return error.response.data
-      ? { access: error.response.access, message: error.response.message }
+      ? { access: false, message: error.response.data.message }
       : { access: false, message: error.message };
   }
 };
