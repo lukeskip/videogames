@@ -34,7 +34,6 @@ export default function Login() {
         navigate("/");
       } else {
         setErrors(response.message);
-        console.log("hola!!!", response);
       }
     } catch (error) {
       setErrors(error.message);
@@ -49,10 +48,6 @@ export default function Login() {
     { label: "Registrar", action: handleForm },
     { label: "Entrar", action: () => setRegister(!register) },
   ];
-
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   return (
     <div className={styles.loginWrapper}>

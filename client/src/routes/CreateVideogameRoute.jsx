@@ -21,10 +21,8 @@ export default function CreateVideogameRoute() {
   const navigate = useNavigate();
 
   const formHandler = async () => {
-    console.log("Sending form...");
     try {
       const response = await postVideogame(formData);
-      console.log(response);
       if (response.status) {
         navigate(`/detail/${response.videogame.id}`);
       } else {
@@ -56,16 +54,7 @@ export default function CreateVideogameRoute() {
     setFormData({ ...formData, [property]: array });
   };
 
-  const clearHandler = () => {
-    console.log("Cleaning form...");
-  };
-  const buttons = [
-    { label: "Guardar", action: formHandler },
-    { label: "Limpiar", action: clearHandler },
-  ];
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  const buttons = [{ label: "Guardar", action: formHandler }];
 
   useEffect(() => {
     if (!credentials) {

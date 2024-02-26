@@ -2,7 +2,7 @@ const { User } = require("../db");
 const loginController = async (req, res) => {
   const { email, password } = req.body;
   if (email && password) {
-    const user = await User.findOne({ where: { email, password } });
+    const user = await User.findOne({ where: { email } });
     if (!user) {
       return res.status(404).json({ message: "usuario no encontrado" });
     }
