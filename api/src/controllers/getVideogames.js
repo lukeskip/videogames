@@ -11,7 +11,7 @@ const getVideogames = async (req, res) => {
   let videogames = [];
   let videogamesAPI = [];
   let videogamesDB = [];
-  console.log("Getting Videogames...");
+  const errors = [];
 
   // We serach in the API
   try {
@@ -31,8 +31,7 @@ const getVideogames = async (req, res) => {
 
     videogamesAPI = cleanProperties(videogamesAPI, "api");
   } catch (error) {
-    // in case of error we send the error to the console
-    console.log(error.message);
+    errors.push(error);
   }
 
   // We search in the DB
@@ -52,7 +51,7 @@ const getVideogames = async (req, res) => {
     videogamesDB = cleanProperties(videogamesDB, "db");
   } catch (error) {
     // in case of error we send the error to the console
-    console.log(error.message);
+    errors.push(error);
   }
 
   // we combine array even if they're empty
@@ -63,7 +62,7 @@ const getVideogames = async (req, res) => {
     res.json(videogames);
   } else {
     // If the final array is empty we send a 404 error
-    res.status(404).json({ message: "No se encontraron elementos" });
+    res.status(404).json({ message: "No se encontraron elementos", errors });
   }
 };
 

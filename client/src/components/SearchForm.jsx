@@ -25,7 +25,7 @@ export default function SearchForm() {
 
   const buttons = [
     { label: "Buscar", action: formHandler },
-    { label: "Limpiar", action: clearHandler },
+    { label: "Refresh", action: clearHandler },
   ];
 
   const handleKeyPress = (e) => {

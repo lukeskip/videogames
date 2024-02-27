@@ -45,6 +45,7 @@
     height:500px;
     position:absolute;
     top:-540px;
+    left:150px;
     background-color: rgb(26, 26, 26);
 }
 
@@ -54,6 +55,7 @@
     height:30px;
     position:absolute;
     top:-70px;
+    left:145px;
     background-color: rgb(26, 26, 26);
 
 }

@@ -2,9 +2,9 @@
 .detail{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .detail .image{
-    width: 50%;
     display: flex;
     justify-content: end;
     padding-right: 40px;
@@ -29,7 +29,8 @@
   }
 
 .detail .info{
-    width: 50%;
+    max-width: 500px;
+    padding: 40px;
 }
 
 .detail .info .release{
