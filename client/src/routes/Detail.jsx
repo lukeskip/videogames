@@ -37,10 +37,12 @@ export default function Detail() {
       "Noviembre",
       "Diciembre",
     ];
+
     const releaseDate = new Date(release + "T00:00:00");
     const day = releaseDate.getDate();
     const month = releaseDate.getMonth();
     const year = releaseDate.getFullYear();
+
     return `${day} de ${months[month]} de ${year}`;
   };
 
@@ -52,6 +54,7 @@ export default function Detail() {
       try {
         const getVideogame = await getDetailVideogame(id, dispatch);
         setVideogame(getVideogame);
+        console.log(getVideogame);
       } catch (error) {
         console.log(error);
       }
@@ -112,7 +115,9 @@ export default function Detail() {
                 })}
               </div>
               <div className={stylesDetail.release}>
-                {getFormattedDate(videogame.release)}
+                {getFormattedDate(
+                  videogame.release ? videogame.release : videogame.released
+                )}
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: videogame.description }}
