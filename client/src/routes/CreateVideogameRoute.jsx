@@ -1,15 +1,14 @@
 import Reac, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styles from "../css/Form.module.css";
 import stylesContainer from "../css/Container.module.css";
 import Buttons from "../components/Buttons";
 import Header from "../components/Header";
 import postVideogame from "../controllers/postVideogame.js";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import getGenres from "../controllers/getGenres";
 import getPlatforms from "../controllers/getPlatforms";
 import Multiselect from "../components/Multiselect";
-
 import MainLayout from "../layouts/MainLayout";
 
 export default function CreateVideogameRoute() {
@@ -50,7 +49,6 @@ export default function CreateVideogameRoute() {
   };
 
   const multiSelectHandle = (array, property) => {
-    console.log(array, property);
     setFormData({ ...formData, [property]: array });
   };
 
