@@ -9,6 +9,8 @@ import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
+import getFormattedDate from "../helpers/getFormattedDate.js";
+import generateRandom from "../helpers/generateRandom";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -18,34 +20,6 @@ export default function Detail() {
   const credentials = useSelector((state) => state.credentials);
   const error = useSelector((state) => state.error);
 
-  const generateRandom = () => {
-    return Math.floor(Math.random() * 7) - 3;
-  };
-
-  const getFormattedDate = (release) => {
-    const months = [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre",
-    ];
-
-    const releaseDate = new Date(release + "T00:00:00");
-    const day = releaseDate.getDate();
-    const month = releaseDate.getMonth();
-    const year = releaseDate.getFullYear();
-
-    return `${day} de ${months[month]} de ${year}`;
-  };
-
   useEffect(() => {
     if (!credentials) {
       navigate("/login");
@@ -54,7 +28,6 @@ export default function Detail() {
       try {
         const getVideogame = await getDetailVideogame(id, dispatch);
         setVideogame(getVideogame);
-        console.log(getVideogame);
       } catch (error) {
         console.log(error);
       }

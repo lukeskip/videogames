@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "../css/Videogame.module.css";
 import { useNavigate } from "react-router-dom";
+import generateRandom from "../helpers/generateRandom.js";
 
 export default function Videogame({ videogame }) {
   const navigate = useNavigate();
-  const generateRandom = () => {
-    return Math.floor(Math.random() * 7) - 3;
-  };
 
   return (
     <div
