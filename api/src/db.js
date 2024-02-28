@@ -32,7 +32,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Videogame, Genre, User, Rating, Platform } = sequelize.models;
 
-Videogame.Genre = Videogame.belongsToMany(Genre, {
+Videogame.belongsToMany(Genre, {
   through: "videogame_genre",
 });
 Genre.belongsToMany(Videogame, { through: "videogame_genre" });
