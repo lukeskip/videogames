@@ -13,7 +13,7 @@ const getVideogames = async (req, res) => {
   let videogamesDB = [];
   const errors = [];
 
-  // We serach in the API
+  // We search in the API
   try {
     let queryString;
 

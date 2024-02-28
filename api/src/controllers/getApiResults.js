@@ -4,7 +4,7 @@ const getApiResults = async (url, page = 1, results = []) => {
   try {
     let videogames = await axios(`${url}&page=${page}`);
     results = [...videogames.data.results, ...results];
-    if (results.length <= Number(API_LIMIT)) {
+    if (results.length < Number(API_LIMIT)) {
       return getApiResults(url, page + 1, results);
     } else {
       return results;
